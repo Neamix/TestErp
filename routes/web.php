@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('dashboard');
 });
+
+//Set Localization 
+
+Route::get('/lang/{lang}',[UserController::class,'setLocal'])->name('lang');
+
+Route::get('/home', 'HomeController@index')->name('home');

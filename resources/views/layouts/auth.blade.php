@@ -25,10 +25,6 @@
         <!--=================================
  preloader -->
 
-        @include('layouts.main-header')
-
-        @include('layouts.main-sidebar')
-
         <!--=================================
  Main content -->
         <!-- main-content -->
