@@ -9,5 +9,6 @@ return [
     'schedule' => 'الجدول',
     'logout'   => 'تسجيل خروج',
     'settings' => 'الاعدادات',
-    'you_can\'t_add_user_in_a_future_date' => 'لا يمكنك وضع مستخدم بتاريخ مستقبلي'
+    'you_can\'t_add_user_in_a_future_date' => 'لا يمكنك وضع مستخدم بتاريخ مستقبلي',
+    'user_has_been_created_successfully' => 'تم انشاء مستخدم بنجاح'
 ];

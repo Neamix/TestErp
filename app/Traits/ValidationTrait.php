@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-class ValidationTrait {
+class validationTrait {
 
     public function validationResult($result,$message) {
         return [
