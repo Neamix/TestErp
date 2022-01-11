@@ -3,10 +3,10 @@
 namespace App\Traits;
 
 
-class upsertInstance {
+trait upsertTrait {
     
     public function upsertInstance() {
-        ( isset($this->id) ) ? $this->createInstance() : self::updateInstance($this);
+        ( isset($this->id) ) ? $this->createInstance() : $this->updateInstance();
     }
 
 }

@@ -6,14 +6,14 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
-use App\Traits\upsertInstance;
+use App\Traits\upsertTrait;
 use App\Traits\validationTrait;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
-    use Notifiable,upsertInstance,validationTrait;
+    use Notifiable,upsertTrait,validationTrait;
 
     /**
      * The attributes that are mass assignable.
