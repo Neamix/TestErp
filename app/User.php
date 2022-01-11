@@ -71,6 +71,6 @@ class User extends Authenticatable
             ]
         );
 
-        return validationResult('success',__('user_has_been_created_successfully'));
+        return self::validationResult('success',__('user_has_been_created_successfully'));
     }
 }
