@@ -2,11 +2,13 @@
 
 namespace App\Traits;
 
+use App\User;
 
 trait upsertTrait {
     
-    public function upsertInstance() {
-        ( isset($this->id) ) ? $this->createInstance() : $this->updateInstance();
+    public static function upsertInstance($user) {
+        $user = new User($user);
+        return ( isset($user->id) ) ? $user->createInstance() : $user->updateInstance();
     }
 
 }

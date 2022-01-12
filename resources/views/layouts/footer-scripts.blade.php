@@ -8,6 +8,9 @@
 
 </script>
 
+<!-- init -->
+<script src="{{ URL::asset('assets/js/initialization.js') }}"></script>
+
 <!-- chart -->
 <script src="{{ URL::asset('assets/js/chart-init.js') }}"></script>
 <!-- calendar -->

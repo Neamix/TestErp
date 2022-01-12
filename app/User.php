@@ -20,9 +20,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -65,12 +63,12 @@ class User extends Authenticatable
                 'email' => $this->email,
                 'name'  => $this->name,
                 'password' => Hash::make($this->password),
-                'active' => $this->active,
+                'active' => 1,
                 'grade'  => $this->grade ?? null,
                 'join_date' => Carbon::now(),
             ]
         );
 
-        return self::validationResult('success',__('user_has_been_created_successfully'));
+        return self::validationResult('success',__('system.user_has_been_created_successfully'));
     }
 }
