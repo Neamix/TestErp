@@ -24,6 +24,11 @@ class UserController extends Controller
       return $upsertInstance;
    }
 
+   public function list(Request $request) {
+      $users = User::filter($request);
+      return $users;
+   }
+
    public function edit(User $user) {
       return view('user.upsert')->with([
          'user' => $user

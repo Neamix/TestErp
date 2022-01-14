@@ -79,4 +79,22 @@ class User extends Authenticatable
 
         return self::validationResult('success',__('system.user_has_been_created_successfully'));
     }
+
+    public static function filter($request) {
+
+        $builder = User::where('active',$request['active']);
+
+        if($request['name']) {
+            $builder->where('name','like','%'.$request['name'].'%');
+        }
+
+        if($request['type']) {
+            $builder->where('type',$request['type']);
+        }
+
+        // dd($builder->toSql());
+
+        return $builder->get();
+
+    }
 }
