@@ -6,9 +6,8 @@ use App\User;
 
 trait upsertTrait {
     
-    public static function upsertInstance($user) {
-        $user = new User($user);
-        return ( isset($user->id) ) ? $user->createInstance() : $user->updateInstance();
+    public  function upsertInstance($request) {
+        return ( isset($this->id) ) ? $this->updateInstance($request->all()) : $this->createInstance();
     }
 
 }

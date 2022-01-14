@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -26,14 +27,23 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => [Rule::requiredIf( ! $this->id ),'email','unique:users'],
-            'name'  => [Rule::requiredIf( ! $this->id )],
-            'password' => [Rule::requiredIf( ! $this->id ),'min:8'],
-            'type'   => [Rule::requiredIf( ! $this->id )],
+            'email' => ['required','email',function($attribute,$value,$fail){
+                if(isset($this->id)) {
+                    $userWithEmail = User::where('email',$this->email)->where('id','<>',$this->id)->count();
+                } else {
+                    $userWithEmail = User::where('email',$this->email)->count();
+                }
+                if($userWithEmail) {
+                    $fail('validation.unique');
+                }
+            }],
+            'name'  => ['required'],
+            'type'   => ['required'],
             'join_date' => [
                 function($attribute, $value, $fail) {
                     if(strtotime($value) > strtotime(Carbon::now())) {
-                        return $fail(__('system.you_can\'t_add_user_in_a_future_date'));
+                        return $fail(__('
+                        .you_can\'t_add_user_in_a_future_date'));
                     }
                 }
             ]

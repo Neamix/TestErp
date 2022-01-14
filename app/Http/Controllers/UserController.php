@@ -19,7 +19,14 @@ class UserController extends Controller
    }
 
    public function upsert(UserRequest $request) {
-      $upsertInstance = User::upsertInstance($request->all());
+      $user = (isset($request->id)) ? User::find($request->id): new User($request->all());
+      $upsertInstance = $user->upsertInstance($request);
       return $upsertInstance;
+   }
+
+   public function edit(User $user) {
+      return view('user.upsert')->with([
+         'user' => $user
+      ]);
    }
 }

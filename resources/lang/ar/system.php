@@ -13,5 +13,11 @@ return [
     'user_name' => 'اسم المستخدم',
     'user_email' => 'ايميل المستخدم',
     'user_job'  => 'وظيفة المستخدم',
-    'user_join_date' => 'تاريخ انضمام المستخدم', 
+    'user_join_date' => 'تاريخ انضمام المستخدم',
+    'user_has_been_created_successfully' => 'تم اضافة مستخدم بنجاح',
+    'edit_user' => 'تعديل مستخدم',
+    'create_user' => 'اضافة مستخدم',
+    'crew' => 'موظف',
+    'student' => 'طالب',
+    'teacher' => 'معلم'
 ];

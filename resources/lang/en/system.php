@@ -14,4 +14,10 @@ return [
     'user_email' => 'User Email',
     'user_job'  => 'User Job',
     'user_join_date' => 'User Join Date', 
+    'user_has_been_created_successfully' => 'user has been created successfully',
+    'edit_user' => 'Edit User',
+    'create_user' => 'Create User',
+    'crew' => 'موظف',
+    'student' => 'طالب',
+    'teacher' => 'معلم'
 ];

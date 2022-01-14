@@ -2,18 +2,21 @@
 
 namespace App;
 
+use App\Http\Helpers\Mailer;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\upsertTrait;
 use App\Traits\validationTrait;
+use App\Traits\generateToken;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
-    use Notifiable,upsertTrait,validationTrait;
+    use Notifiable,upsertTrait,validationTrait,generateToken;
 
     /**
      * The attributes that are mass assignable.
@@ -53,21 +56,26 @@ class User extends Authenticatable
 
     public function createInstance() {
         $user = User::create([]);
-        return $user->updateInstance();
+        return $user->updateInstance($this->toArray());
     }
 
-    public function updateInstance() {
-        $user = User::firstOrCreate(
+    public function updateInstance($data) {
+        $user = User::updateOrCreate(
             ['id' => $this->id ?? null],
             [
-                'email' => $this->email,
-                'name'  => $this->name,
-                'password' => Hash::make($this->password),
-                'active' => 1,
-                'grade'  => $this->grade ?? null,
+                'email' => $data['email'],
+                'name'  => $data['name'],
+                'password' => isset($data['password']) ? Hash::make($data['password']) : null,
+                'grade'  => $data['grade'] ?? null,
+                'type'   => $data['type'],
                 'join_date' => Carbon::now(),
             ]
         );
+
+        if( ! $data['id'] ) {
+            $token = self::token($user);
+            Mailer::verifyUser($user,$token);
+        }
 
         return self::validationResult('success',__('system.user_has_been_created_successfully'));
     }

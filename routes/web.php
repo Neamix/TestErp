@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,19 +19,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-
-Route::get('/', function () {
-    return view('dashboard');
+Route::get('/test',function(){
+    $user = User::find(1);
+    Password::createToken($user);
 });
 
-//Set Localization 
-
-Route::get('/lang/{lang}',[UserController::class,'setLocal'])->name('lang');
-
-Route::get('/home', [HomeController::class,'index'])->name('home');
-
-Route::group(['prefix' => 'user'],function(){
-    Route::get('/',[UserController::class,'index']);
-    Route::get('/edit',[UserController::class,'index']);
-    Route::post('/upsert',[UserController::class,'upsert']);
+Route::group(['middleware' => 'auth'],function(){
+    Route::get('/', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    
+    //Set Localization 
+    Route::get('/lang/{lang}',[UserController::class,'setLocal'])->name('lang');
+    
+    Route::group(['prefix' => 'user'],function(){
+        Route::get('/',[UserController::class,'index']);
+        Route::get('/edit/{user}',[UserController::class,'edit']);
+        Route::post('/upsert/{user?}',[UserController::class,'upsert']);
+        Route::post('/list',[UserController::class,'list']);
+    });
 });
