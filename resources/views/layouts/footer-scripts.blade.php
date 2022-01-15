@@ -9,10 +9,10 @@
 </script>
 {{-- Swal --}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <!-- init -->
 <script src="{{ URL::asset('assets/js/initialization.js') }}"></script>
-
+<!-- pagination -->
+<script src="{{ URL::asset('assets/js/pagination.js') }}"></script>
 <!-- chart -->
 <script src="{{ URL::asset('assets/js/chart-init.js') }}"></script>
 <!-- calendar -->

@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\User;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
@@ -38,13 +39,15 @@ Route::group(['middleware' => 'auth'],function(){
         Route::post('/upsert/{user?}',[UserController::class,'upsert']);
         Route::get('/list',[UserController::class,'filter']);
     });
+});
 
-    Route::get('/test',function(){
-        $request = [
-            'name' => 'Abdelrhman',
-            'type' => 1,
-            'active' => 1
-        ];
-        dd(User::filter($request)->toArray());
-    });
+Route::get('/test',function(){
+    // $request = [
+    //     'name' => 'Abdelrhman',
+    //     'type' => 1,
+    //     'active' => 1
+    // ];
+    // dd(User::filter($request)->toArray());
+    $jobs = [1,2,3];
+    dd(Arr::random($jobs,1));
 });

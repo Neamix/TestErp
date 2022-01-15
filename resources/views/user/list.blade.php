@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-empty
+User List
 @stop
 @endsection
 @section('page-header')
@@ -18,7 +18,7 @@ empty
 @endsection
 @section('content')
 <!-- row -->
-<div class="row">
+<div class="row user-list">
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
@@ -40,15 +40,15 @@ empty
                     <div class="col-md-6">
                         <form class="active-form row">
                             <div class="form-group d-flex align-items-center col-md-4 mb-0">
-                                <input class="form-control w-25 active_user" name="active-state" type="radio" value="1">
+                                <input class="form-control w-25 active_user" name="active-state" type="radio" value="0" checked>
                                 <label class="mb-0">All User</label>
                             </div>
                             <div class="form-group d-flex col-md-4 mb-0">
-                                <input class="form-control w-25 align-items-center active_user" name="active-state" type="radio" value="2">
+                                <input class="form-control w-25 align-items-center active_user" name="active-state" type="radio" value="1">
                                 <label class="mb-0">Active User</label>
                             </div>
                             <div class="form-group d-flex col-md-4 align-items-center mb-0">
-                                <input class="form-control w-25 active_user" name="active-state" type="radio" value="3">
+                                <input class="form-control w-25 active_user" name="active-state" type="radio" value="2">
                                 <label class="mb-0">Suspended User</label>
                             </div>
                         </form>
@@ -71,6 +71,8 @@ empty
 <script>
     //init list
     $(function(){
+        let reloadPager = true;
+
         function getUser() {
             let type = $('.select_job').val();
             let name = ($('.search-user').val().length) ? $('.search-user').val() : null;
@@ -85,14 +87,13 @@ empty
                     'active': active
                 },
                 success: function(e) {
-                    pages = Math.ceil(3/15);
-                    users = e.data;
+                    let users = e.data;
+
                     $('.users-list').html('');
-                    $('.pagination').html('');
-                    if(pages > 1) {
-                        for(i = 1; i <= pages; i++) {
-                            $('.pagination').append(`<li class="page-link" value="${i}">${i}</li>`);
-                        }
+                    
+                    if(reloadPager) {
+                        createPagination(e.total,e.per_page,$('.pagination'));
+                        reloadPager = false;
                     }
                   
                     users.forEach(user => {
@@ -123,12 +124,21 @@ empty
         getUser();
 
         $('.search-user').on('keyup',function(){
+            reloadPager = true;
+            setPage(1);
             getUser();
         });
 
         $('.active_user,.select_job').on('change',function(){
+            reloadPager = true;
+            setPage(1);
             getUser();
-        })
+        });
+
+        $('.user-list').on('click','.page-item',function(){
+            setPage($(this).attr('value'));
+            getUser();
+        });
     });
 </script>
 @endsection
