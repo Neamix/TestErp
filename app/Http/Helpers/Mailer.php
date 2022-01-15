@@ -15,6 +15,15 @@ class Mailer {
         self::sendEmail($send);
     }
 
+    static function forgetPassword($user,$token) {
+        $send['title'] = 'Forget Password';
+        $send['email'] = $user->email;
+        $send['name']  = $user->name;
+        $send['token'] = $token;
+        $send['view']  = 'emails.verifyEmail';
+        self::sendEmail($send);
+    }
+
     static function sendEmail($data) {
         Mail::to($data['email'])->queue(new DefaultEmail($data));
     }

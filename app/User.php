@@ -101,4 +101,11 @@ class User extends Authenticatable
         return $builder;
 
     }
+
+    public function sendPasswordResetNotification($token)
+    {
+        Mailer::forgetPassword($this,$token);
+
+        return redirect('/login');
+    }
 }
