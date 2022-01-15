@@ -17,7 +17,7 @@ return [
     'user_has_been_created_successfully' => 'user has been created successfully',
     'edit_user' => 'Edit User',
     'create_user' => 'Create User',
-    'crew' => 'موظف',
-    'student' => 'طالب',
-    'teacher' => 'معلم'
+    'crew' => 'Crew',
+    'student' => 'Student',
+    'teacher' => 'Teacher'
 ];

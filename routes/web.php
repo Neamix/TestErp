@@ -36,6 +36,15 @@ Route::group(['middleware' => 'auth'],function(){
         Route::get('/',[UserController::class,'index']);
         Route::get('/edit/{user}',[UserController::class,'edit']);
         Route::post('/upsert/{user?}',[UserController::class,'upsert']);
-        Route::post('/list',[UserController::class,'list']);
+        Route::get('/list',[UserController::class,'filter']);
+    });
+
+    Route::get('/test',function(){
+        $request = [
+            'name' => 'Abdelrhman',
+            'type' => 1,
+            'active' => 1
+        ];
+        dd(User::filter($request)->toArray());
     });
 });

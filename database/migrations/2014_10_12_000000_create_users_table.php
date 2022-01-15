@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
-            $table->boolean('active')->default(false);
+            $table->boolean('active')->default(true);
             $table->string('grade')->nullable();
-            $table->string('type')->nullable();
+            $table->integer('type')->nullable();
             $table->date('join_date')->default(Carbon::now());
             $table->string('avatar')->default('default.png');
             $table->string('remember_token')->nullable();

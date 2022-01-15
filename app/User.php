@@ -82,19 +82,23 @@ class User extends Authenticatable
 
     public static function filter($request) {
 
-        $builder = User::where('active',$request['active']);
+        $builder = User::select('*');
 
-        if($request['name']) {
+        if(isset($request['name']) && ! empty($request['name'])) {
             $builder->where('name','like','%'.$request['name'].'%');
         }
 
-        if($request['type']) {
+        if(isset($request['type']) && ! empty($request['type'])) {
             $builder->where('type',$request['type']);
+        }
+
+        if(isset($request['active']) && ! empty($request['active'])) {
+            $builder->where('active',$request['active']);
         }
 
         // dd($builder->toSql());
 
-        return $builder->get();
+        return $builder;
 
     }
 }

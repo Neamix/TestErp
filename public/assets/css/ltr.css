@@ -5030,6 +5030,19 @@ tbody.collapse.show {
     margin-bottom: 15px;
 }
 
+.card-user {
+    cursor: pointer;
+}
+
+.card-user img {
+    max-width: 49px ;
+}
+
+.card-user h2 {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+}
 @media (min-width: 576px) {
     .card-deck {
         -webkit-box-orient: horizontal;
