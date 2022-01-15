@@ -14,6 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        factory(App\User::class)->times(200)->create();
         User::updateOrCreate(
             ['id' => 1],
             [
