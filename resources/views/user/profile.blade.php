@@ -61,7 +61,6 @@
                         </div>
                     </div>
                 </div>
-                {{ CREW }}
                 @if(Auth::id() != $user->id)
                 <div class="privilleges mt-5 pt-4">
                     <h2 class="fs-medium mb-2">{{ $user->name }}'s Priviledges</h2>
@@ -179,8 +178,6 @@
         e.preventDefault();
         target = $(this).attr('target');
         targetInput = document.getElementById(target);
-        console.log(targetInput);
-        // console.log(targetInput.val());
         targetInput.value = '';
         targetInput.click();
         targetInput.addEventListener('change',function(){
@@ -243,14 +240,16 @@
 
         //file read
         let fileRead = new FileReader();
-        console.log(file);
         fileRead.onload = function () {
+            
             let result = fileRead.result;
             let image  =  new Image();
             let error  = {};
             image.src = result;
             window.avatar = result;
+
             image.onload = function () {
+                
                 if(this.width < 624 || this.height < 596) {
                     error['min'] = '{{__("validation.this_image_is_very_small_the_avatar_must_be_at_least_624_px_X_596_px")}}';
                 } else {
@@ -258,8 +257,9 @@
                 }
 
                 if(this.width > 1000 || this.height > 990) {
-                    error['max'] = '{{__("this_image_is_very_large_the_avatar_must_be_at_max_1000_px_X_990_px")}}';
+                    error['max'] = '{{__("validation.this_image_is_very_large_the_avatar_must_be_at_max_1000_px_X_990_px")}}';
                 }
+
                 if(Object.keys(error).length) {
                     $('#avatar_error').text(error[Object.keys(error)[0]]);
                 } else {
@@ -268,13 +268,16 @@
                 }
             }
         }
+
         fileRead.readAsDataURL(file);
         window.file = file;
     }
 
     $('.uploadAvatar').on('click',function(){
+
         let formData = new FormData();
         formData.append('avatar',window.file);
+
         $.ajax({
             url: '/user/avatar',
             type: 'post',

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserAvatar;
 use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -46,7 +47,7 @@ class UserController extends Controller
       ]);
    }
 
-   public function avatar(Request $request) {
+   public function avatar(UserAvatar $request) {
       return auth()->user()->avatarModify($request->avatar);
    }
 
