@@ -4,7 +4,7 @@
             <!-- logo -->
             <div class="text-left navbar-brand-wrapper">
                 <a class="navbar-brand brand-logo" href="index.html"><img src="/assets/images/logo-dark.png" alt=""></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-icon-dark.png"
+                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="/assets/images/logo-icon-dark.png"
                         alt=""></a>
             </div>
             <!-- Top bar left -->
@@ -48,7 +48,7 @@
                 <li class="nav-item dropdown mr-30">
                     <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="/assets/images/profile-avatar.jpg" alt="avatar">
+                        <img src="/assets/images/users/{{ Auth::user()->avatar }}"  class="myAvatar">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-header">
