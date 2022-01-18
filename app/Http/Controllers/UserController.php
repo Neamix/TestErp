@@ -45,4 +45,15 @@ class UserController extends Controller
          'user' => $user
       ]);
    }
+
+   public function avatar(Request $request) {
+      return auth()->user()->avatarModify($request->avatar);
+   }
+
+   static public function profile(User $user ) {
+      $user = (isset($user->id)) ? $user : Auth::user();
+      return view('user.profile')->with([
+         'user' => $user
+      ]);
+   }
 }

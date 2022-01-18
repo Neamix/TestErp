@@ -19,5 +19,12 @@ return [
     'create_user' => 'Create User',
     'crew' => 'Crew',
     'student' => 'Student',
-    'teacher' => 'Teacher'
+    'teacher' => 'Teacher',
+    'subjects' => 'Subjects',
+    'create_subject' => 'create_subject',
+    'reset' => 'reset',
+    'save_changes' => 'SAVE CHANGES',
+    'close' => 'close',
+    'browse' => 'Browse',
+    'or' => 'Or'
 ];

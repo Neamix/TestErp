@@ -17,7 +17,17 @@ return [
     'user_has_been_created_successfully' => 'تم اضافة مستخدم بنجاح',
     'edit_user' => 'تعديل مستخدم',
     'create_user' => 'اضافة مستخدم',
+    'create_subject' => 'اضافة ماده',
+    'user_list' => 'قائمة المستخدمين',
+    'subject_list' => 'قائمة المواد',
     'crew' => 'موظف',
     'student' => 'طالب',
-    'teacher' => 'معلم'
+    'teacher' => 'معلم',
+    'subjects' => 'المواد',
+    'reset' => 'أعاده تعيين',
+    'save_change' => 'حفظ التغيرات',
+    'close' => 'أغلاق',
+    'browse' => 'ابحث',
+    'or' => 'او',
+    'drag&drop' => 'ابحث و الصق'
 ];

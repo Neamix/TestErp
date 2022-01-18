@@ -38,13 +38,13 @@ User List
                         </form>
                     </div>
                     <div class="col-md-6">
-                        <form class="active-form row">
+                        <form class="active-form row h-100">
                             <div class="form-group d-flex align-items-center col-md-4 mb-0">
                                 <input class="form-control w-25 active_user" name="active-state" type="radio" value="0" checked>
                                 <label class="mb-0">All User</label>
                             </div>
-                            <div class="form-group d-flex col-md-4 mb-0">
-                                <input class="form-control w-25 align-items-center active_user" name="active-state" type="radio" value="1">
+                            <div class="form-group d-flex col-md-4 mb-0 align-items-center">
+                                <input class="form-control w-25  active_user" name="active-state" type="radio" value="1">
                                 <label class="mb-0">Active User</label>
                             </div>
                             <div class="form-group d-flex col-md-4 align-items-center mb-0">

@@ -459,6 +459,9 @@ h6 {
     font-size: 1rem;
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
 .lead {
     font-size: 1.25rem;
     font-weight: 300;
@@ -6059,7 +6062,31 @@ button.close {
     overflow: scroll;
 }
 
+.modal .drag-zone {
+    width: 100%;
+    min-height: 400px;
+    border:4px dashed;
+}
+
+.modal .drag-zone.active {
+    border-color: var(--gray);
+}
+
+.modal .image-preview {
+    max-width: 100%;
+    max-height: 355px;
+}
+
+.modal .image-preview img {
+    width: 355px;
+    height: 100%;
+}
+
 @media (min-width: 576px) {
+    .modal-wide {
+        max-width: 641px !important;
+    }
+
     .modal-dialog {
         max-width: 500px;
         margin: 1.75rem auto;
@@ -10280,6 +10307,13 @@ a.text-dark:hover {
  *  Made by István Ujj-Mészáros
  *  Under Apache License v2.0 License
  */
+.overlay {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background: #0005;
+    z-index: 100000;
+}
 .bootstrap-touchspin .input-group-btn-vertical {
     position: relative;
     white-space: nowrap;
@@ -26018,23 +26052,25 @@ button:focus {
 
 .button {
     background: #84ba3f;
-    padding: 10px 20px;
-    font-size: 1rem;
     letter-spacing: 1px;
     border: 0;
     color: #ffffff;
     text-transform: uppercase;
     font-weight: 500;
     display: inline-block;
-    border-radius: 3px;
     text-align: center;
-    border: 2px solid #84ba3f;
     cursor: pointer;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    padding: 6px 20px;
+    font-size: 10px;
+}
+
+.button.danger {
+    background-color: var(--danger);
 }
 
 .button:hover {
@@ -28389,7 +28425,42 @@ footer {
     line-height: 70px;
     color: rgba(255, 255, 255, 0.5);
 }
+/*card profile*/
+.card.card-profile img {
+    width: 123px;
+}
 
+/*card profile*/
+.tag {
+    display: inline;
+    padding: 4px 20px;
+    font-size: 12px;
+    background: var(--blue);
+    border-radius: 3px;
+    color: #fff;
+}
+
+
+.card.card-profile img {
+    width: 123px;
+    border-radius: 50%;
+}
+
+.card.card-profile .img-modify-trigger {
+    position: absolute;
+    width: 123px;
+    height: 100%;
+    top: 0;
+    border-radius: 50%;
+    background: #0005;
+    opacity: 0;
+    transition: all .3s linear;
+    cursor: pointer;
+}
+
+.card.card-profile .img-modify-trigger:hover {
+    opacity: 1;
+}
 /*dashboard 02*/
 .active-user {
     padding: 0px 0px 30px 0;

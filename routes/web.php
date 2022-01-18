@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'],function(){
         Route::get('/edit/{user}',[UserController::class,'edit']);
         Route::post('/upsert/{user?}',[UserController::class,'upsert']);
         Route::get('/list',[UserController::class,'filter']);
+        Route::get('/profile/{user?}',[UserController::class,'profile']);
+        Route::post('/avatar',[UserController::class,'avatar']);
     });
 });
 
@@ -48,6 +50,6 @@ Route::get('/test',function(){
     //     'active' => 1
     // ];
     // dd(User::filter($request)->toArray());
-    $jobs = [1,2,3];
-    dd(Arr::random($jobs,1));
+    // $jobs = [1,2,3];
+    // dd(Arr::random($jobs,1));
 });

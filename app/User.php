@@ -12,6 +12,7 @@ use App\Traits\validationTrait;
 use App\Traits\generateToken;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
@@ -107,5 +108,13 @@ class User extends Authenticatable
         Mailer::forgetPassword($this,$token);
 
         return redirect('/login');
+    }
+
+    public function avatarModify($avatar) {
+        $name = 'user_'.Auth::id().'.jpg';
+        move_uploaded_file($avatar,public_path('assets/images/users/').$name);
+        Auth::user()->avatar = $name;
+        Auth::user()->save();
+        return self::validationResult('success',__('validation.avatar_has_been_modified'));
     }
 }
