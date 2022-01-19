@@ -37,12 +37,12 @@
                             <h2 class="fs-large">{{ $user->name }}</h2>
                             <p class="fs-small mb-3"> {{ $user->email }} </p>
                             <p class="tag">
-                                @if($user->type == 1) 
-                                    Crew 
-                                @elseif($user->type == 2) 
-                                    Teacher 
+                                @if($user->type == CREW) 
+                                    {{__('system.crew')}}
+                                @elseif($user->type == TEACHER) 
+                                    {{__('system.teacher')}} 
                                 @else 
-                                    Student 
+                                    {{__('system.student')}} 
                                 @endif 
                             </p>
                             @if(Auth::id() != $user->id)
@@ -65,14 +65,14 @@
                 <div class="privilleges mt-5 pt-4">
                     <h2 class="fs-medium mb-2">{{ $user->name }}'s Priviledges</h2>
                     <div class="row">
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <form class="privilledge-form">
                                 <div class="form-group">
-                                    <input class="privillege-input" type="checkbox" name="user" data_child="user">
+                                    <input class="privillege-input" type="checkbox" name="user" data_child="user" value="VIEW_USER_LIST">
                                     <label>View Users List</label>
                                     <div class="child-privillege ml-3">
                                         <div class="form-group mb-2">
-                                            <input class="privillege-input" type="checkbox" data_parent="user">
+                                            <input class="privillege-input" type="checkbox" data_parent="user" value="EDIT_USER">
                                             <label>Edit Users</label>
                                         </div>
                                         <div class="form-group mb-2">
@@ -90,41 +90,15 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
-                        <div class="col-md-4">
+                        </div> --}}
+                        <div class="col-md-6">
                             <form class="privilledge-form">
                                 <div class="form-group">
-                                    <input class="privillege-input" type="checkbox">
+                                    <input class="privillege-input" type="checkbox" value="VIEW_USER_LIST">
                                     <label>View Users List</label>
                                     <div class="child-privillege ml-3">
                                         <div class="form-group mb-2">
-                                            <input class="privillege-input" type="checkbox">
-                                            <label>Edit Users</label>
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <input class="privillege-input" type="checkbox">
-                                            <label>Delete Users</label>
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <input class="privillege-input" type="checkbox">
-                                            <label>Suspend Users</label>
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <input class="privillege-input" type="checkbox">
-                                            <label>Trash Users</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md-4">
-                            <form class="privilledge-form">
-                                <div class="form-group">
-                                    <input class="privillege-input" type="checkbox">
-                                    <label>View Users List</label>
-                                    <div class="child-privillege ml-3">
-                                        <div class="form-group mb-2">
-                                            <input class="privillege-input" type="checkbox">
+                                            <input class="privillege-input" type="checkbox" value="EDIT_USER">
                                             <label>Edit Users</label>
                                         </div>
                                         <div class="form-group mb-2">
@@ -143,7 +117,33 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="button">Save</div>
+                        <div class="col-md-6">
+                            <form class="privilledge-form">
+                                <div class="form-group">
+                                    <input class="privillege-input" type="checkbox" value="{{ VIEW_USER_LIST }}" data_child="user" name="user">
+                                    <label>{{ __('system.view_user_list') }}</label>
+                                    <div class="child-privillege ml-3">
+                                        <div class="form-group mb-2">
+                                            <input class="privillege-input" type="checkbox" value="{{ EDIT_USER }}" parent_id="{{ VIEW_USER_LIST }}" data_parent="user">
+                                            <label>{{ __('system.edit_user') }}</label>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <input class="privillege-input" type="checkbox" value="{{ DELETE_USER }}" parent_id="{{ VIEW_USER_LIST }}" data_parent="user">
+                                            <label>{{ __('system.delete_user') }}</label>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <input class="privillege-input" type="checkbox" value="{{ SUSPEND_USER }}" parent_id="{{ VIEW_USER_LIST }}" data_parent="user">
+                                            <label>{{ __('system.suspend_user') }}</label>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <input class="privillege-input" type="checkbox" value="{{ TRASH_USER }}" parent_id="{{ VIEW_USER_LIST }}" data_parent="user">
+                                            <label>{{ __('system.trash_user') }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="button priviledge_save">Save</div>
                     </div>
                 </div>
                 @endif
@@ -154,21 +154,72 @@
 <!-- row closed -->
 @endsection
 @section('js')
-<script src="{{ URL::asset('assets/js/cropper.js') }}"></script>
 <script>
+    let priviledges_full = @json($user->priviledges);
+    let priviledges_array = [];
+    console.log(priviledges_array);
+
+    //check all input in priviledges array 
+    priviledges_full.forEach(priviledge => {
+        priviledges_array.push(priviledge.id);
+    });
+
+    priviledges_array.forEach(priviledge => {
+        let input = $(`.privillege-input[value=${priviledge}]`);
+
+        if(input.length) {
+            input.click();
+        } 
+    });
+
     $('.privillege-input').on('click',function(){
         if(!$(this).prop('checked')) {
             let name = $(this).prop('name');
             if(name) {
-                $(`.privillege-input[data_parent=${name}]`).prop('checked',false);
+                $(`.privillege-input[data_parent=${name}]`).each(function(){
+                    let checked = $(this).prop('checked');
+                    if(checked) {
+                        $(this).click();
+                    }
+                })
             }
+
         } else {
             let parent = $(this).attr('data_parent');
+
             if(parent) {
-                $(`.privillege-input[data_child=${parent}]`).prop('checked',true);
+
+                if(!$(`.privillege-input[data_child=${parent}]`).prop('checked')) {
+                    $(`.privillege-input[data_child=${parent}]`).click();
+                }
+
             }
+
+        }
+        console.log(priviledges_array);
+    });
+
+    $('.privillege-input').on('change',function(){
+        let val = $(this).val();
+
+        if($(this).prop('checked')) {
+            priviledges_array.push(val);
+        } else {
+            let index = priviledges_array.indexOf(val);
+            priviledges_array.splice(index,1);
         }
     });
+
+    $('.priviledge_save').on('click',function(){
+        $.ajax({
+            url: '/user/priviledge/{{ $user->id }}',
+            method: 'post',
+            data: {'priviledges': priviledges_array},
+            success: function() {
+                console.log('here');
+            }
+        })
+    })
 
     let targetInput;
     let file = null;
@@ -241,7 +292,7 @@
         //file read
         let fileRead = new FileReader();
         fileRead.onload = function () {
-            
+
             let result = fileRead.result;
             let image  =  new Image();
             let error  = {};
@@ -288,12 +339,15 @@
             data: formData,
             success: function(e) {
                 if(e.result == 'success') {
+
                     togglePreview(false);
+
                         Swal.fire({
                             title: 'Success',
                             icon: 'success',
                             showConfirmButton: false
                         });
+
                         $('.closeAvatarModel').click();
                         $('.myAvatar').attr('src',"");
                         $('.myAvatar').attr('src',window.avatar);

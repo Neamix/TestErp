@@ -2,8 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Authorized;
 use App\Http\Middleware\Authuticate;
 use App\Http\Middleware\LocalizationMiddleware;
+use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -40,6 +42,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             LocalizationMiddleware::class,
+            Authorized::class
         ],
 
         'api' => [

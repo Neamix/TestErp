@@ -55,9 +55,9 @@
                                     {{ __('system.user_job') }}
                                 </label>
                                 <select class="form-control" id="user_job">
-                                    <option @isset($user) @if($user['type'] == 1) selected @endif @endisset>{{ __('system.crew') }}</option>
-                                    <option @isset($user) @if($user['type'] == 2) selected @endif @endisset>{{ __('system.teacher') }}</option>
-                                    <option @isset($user) @if($user['type'] == 3) selected @endif @endisset>{{ __('system.student') }}</option>
+                                    <option @isset($user) @if($user['type'] == 1) selected @endif @endisset value="1">{{ __('system.crew') }}</option>
+                                    <option @isset($user) @if($user['type'] == 2) selected @endif @endisset value="2">{{ __('system.teacher') }}</option>
+                                    <option @isset($user) @if($user['type'] == 3) selected @endif @endisset value="3">{{ __('system.student') }}</option>
                                 </select>
                             </div>
                         </div>

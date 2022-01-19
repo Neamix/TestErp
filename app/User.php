@@ -44,6 +44,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $with = [
+        'priviledges'
+    ];
+
     public function setLocal($local) {
 
         if(!in_array($local,['en','ar'])) {
@@ -116,5 +120,36 @@ class User extends Authenticatable
         Auth::user()->avatar = $name;
         Auth::user()->save();
         return self::validationResult('success',__('validation.avatar_has_been_modified'));
+    }
+
+    public function priviledges() {
+        return $this->belongsToMany(Priviledge::class,'user_priviledge');
+    }
+
+    public function hasPriviledge($priviledge,$super = false) {
+
+        $hasPriviledge = ($super) ?  $this->priviledges->whereId('id',[SUPER_ADMIN,$priviledge]) : $this->priviledges->whereIn('id',[SUPER_ADMIN,SYSTEM_ADMIN,$priviledge]);
+
+        if($hasPriviledge->count()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function modifyPriviledges($priviledges) {
+
+        if($this->hasPriviledge(SUPER_ADMIN) || $this->hasPriviledge(SYSTEM_ADMIN)) {
+            $authIsAdmin = Auth::user()->priviledges->where('id',SUPER_ADMIN)->count();
+
+            if( ! $authIsAdmin ) {
+                return self::validationResult('fail',__('validation.un_expected_error'));
+            }
+        } 
+
+        $this->priviledges()->sync($priviledges);
+
+        return self::validationResult('success',__('validation.user_priviledges_has_been_modified'));
+
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PriviledgeRequest;
 use App\Http\Requests\UserAvatar;
 use App\Http\Requests\UserRequest;
+use App\Priviledge;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +38,7 @@ class UserController extends Controller
          return $users;
       }
 
+
       return view('user.list')->with([
          'users' => $users
       ]);
@@ -54,7 +57,12 @@ class UserController extends Controller
    static public function profile(User $user ) {
       $user = (isset($user->id)) ? $user : Auth::user();
       return view('user.profile')->with([
-         'user' => $user
+         'user' => $user,
+         'priviledges' => Priviledge::all()
       ]);
+   }
+
+   public function priviledges(PriviledgeRequest $priviledges,User $user) {
+      return $user->modifyPriviledges($priviledges->priviledges);
    }
 }

@@ -15,6 +15,7 @@ return [
     'user_job'  => 'User Job',
     'user_join_date' => 'User Join Date', 
     'user_has_been_created_successfully' => 'user has been created successfully',
+    'user_list' => 'User list',
     'edit_user' => 'Edit User',
     'create_user' => 'Create User',
     'crew' => 'Crew',
@@ -26,5 +27,10 @@ return [
     'save_changes' => 'SAVE CHANGES',
     'close' => 'close',
     'browse' => 'Browse',
-    'or' => 'Or'
+    'or' => 'Or',
+    'view_user_list' => 'View user list',
+    'edit_user' => 'Edit user',
+    'suspend_user' => 'Suspend user',
+    'delete_user' => 'Delete user',
+    'trash_user' => 'Trash user' 
 ];
