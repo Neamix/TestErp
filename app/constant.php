@@ -16,3 +16,7 @@ define('EDIT_USER_PRIVILEDGES',7);
 define('REMOVE_USER_PRIVILEDGES',8);
 define('SUPER_ADMIN',9);
 define('SYSTEM_ADMIN',10);
+
+//suspend 
+define('ACTIVE',1);
+define('SUSPEND',2);

@@ -65,4 +65,8 @@ class UserController extends Controller
    public function priviledges(PriviledgeRequest $priviledges,User $user) {
       return $user->modifyPriviledges($priviledges->priviledges);
    }
+
+   public function toggleActive(User $user) {
+      return $user->toggleActive();
+   }
 }

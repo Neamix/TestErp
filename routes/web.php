@@ -48,6 +48,7 @@ Route::group(['middleware' => 'auth'],function(){
         Route::get('/profile/{user}',[UserController::class,'profile'])->name('user.profile');
         Route::post('/avatar',[UserController::class,'avatar'])->name('user.avatar');
         Route::post('/priviledge/{user}',[UserController::class,'priviledges'])->name('user.priviledge');
+        Route::post('/state/{user}',[UserController::class,'toggleActive'])->name('user.state');
     });
 });
 

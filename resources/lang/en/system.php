@@ -31,6 +31,7 @@ return [
     'view_user_list' => 'View user list',
     'edit_user' => 'Edit user',
     'suspend_user' => 'Suspend user',
+    'activate_user' => 'Activate user',
     'delete_user' => 'Delete user',
     'trash_user' => 'Trash user' 
 ];

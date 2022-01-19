@@ -152,4 +152,17 @@ class User extends Authenticatable
         return self::validationResult('success',__('validation.user_priviledges_has_been_modified'));
 
     }
+
+    public function toggleActive() {
+        if( $this->active == ACTIVE ) {
+            $this->active = SUSPEND;
+        } else {
+            $this->active = ACTIVE;
+        }
+
+        $this->save();
+        $state = ($this->active) ? 'Activated' : 'Suspended';
+
+        return self::validationResult('success',__('validation.this_user_state_changed_to',['state' => $state]));
+    }
 }

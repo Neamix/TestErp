@@ -11,6 +11,7 @@ class Gates {
         Gate::define('view-dashboard',[UserPolicy::class,'viewDashboard']);
         Gate::define('view-user',[UserPolicy::class,'viewAny']);
         Gate::define('edit-user',[UserPolicy::class,'editUser']);
+        Gate::define('suspend-user',[UserPolicy::class,'suspendUser']);
 
     }
 
@@ -24,6 +25,10 @@ class Gates {
 
         if($name == 'user.edit') {
             $gate = Gate::allows('edit-user');
+        }
+
+        if($name == 'user.state') {
+            $gate = Gate::allows('suspend-user');
         }
         
         return $gate;
