@@ -97,18 +97,19 @@ User List
                     }
                   
                     users.forEach(user => {
+                        console.log(user);
                         let str = `<div class="col-md-4">
                                         <div class="card mt-4">
                                             <div class="card-body card-user d-flex">
                                                 <div class="user-image w-25">
-                                                    <img src="{{ asset('assets/images/users/default.png') }}" alt="user" class="w-100">
+                                                    <img src="/assets/images/users/${user.avatar}" alt="user" class="w-100 rounded-circle">
                                                 </div>
                                                 <div class="user-info">
                                                     <h2>${user.name}</h2>`;
 
-                        if(user.type == 1) str += '<p>Crew</p>';
-                        if(user.type == 2) str += '<p>Teacher</p>';
-                        if(user.type == 3) str += '<p>Student</p>';
+                        if(user.type == 1) str += '<p>{{__("system.crew")}}</p>';
+                        if(user.type == 2) str += '<p>{{__("system.teacher")}}</p>';
+                        if(user.type == 3) str += '<p>{{__("system.student")}}</p>';
 
                         str +=`</div></div></div></div>`;
 
