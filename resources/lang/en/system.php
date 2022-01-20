@@ -37,5 +37,9 @@ return [
     'please_confirm_your_password' =>  'Please confirm your password',
     'confirm_your_password' => 'Confirm your password',
     'confirm' => 'Confirm',
-    'enter_name' => 'Enter name'
+    'enter_name' => 'Enter name',
+    'User_list' => 'User List',
+    'all_user' => 'All User',
+    'active_user' => 'Active User',
+    'suspended_user' => 'Supended User'
 ];

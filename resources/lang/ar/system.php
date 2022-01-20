@@ -39,5 +39,9 @@ return [
     'please_confirm_your_password' => 'من فضلك اكد الرمز السري الخاص بك',
     'confirm_your_password' => 'اكد الرمز السري الخاص بك',
     'confirm' => 'تاكيد',
-    'enter_name' => 'ادخل اسم'
+    'enter_name' => 'ادخل اسم',
+    'user_list' => 'قائمة الاعضاء',
+    'all_user' => 'كل الاعضاء',
+    'active_user' => 'الاعضاء المفعلين',
+    'suspended_user' => 'الاعضاء المعلقين'
 ];

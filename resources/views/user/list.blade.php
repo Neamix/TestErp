@@ -10,7 +10,7 @@ User List
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-2"> Users List</h4>
+            <h4 class="mb-2"> {{ __('system.user_list') }}</h4>
         </div>
     </div>
 </div>
@@ -41,15 +41,15 @@ User List
                         <form class="active-form row h-100">
                             <div class="form-group d-flex align-items-center col-md-4 mb-0">
                                 <input class="form-control w-25 active_user" name="active-state" type="radio" value="0" checked>
-                                <label class="mb-0">All User</label>
+                                <label class="mb-0">{{ __('system.all_user') }}</label>
                             </div>
                             <div class="form-group d-flex col-md-4 mb-0 align-items-center">
                                 <input class="form-control w-25  active_user" name="active-state" type="radio" value="1">
-                                <label class="mb-0">Active User</label>
+                                <label class="mb-0">{{ __('system.active_user') }}</label>
                             </div>
                             <div class="form-group d-flex col-md-4 align-items-center mb-0">
                                 <input class="form-control w-25 active_user" name="active-state" type="radio" value="2">
-                                <label class="mb-0">Suspended User</label>
+                                <label class="mb-0">{{ __('system.suspended_user') }}</label>
                             </div>
                         </form>
                     </div>
