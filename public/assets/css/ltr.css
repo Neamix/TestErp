@@ -5228,12 +5228,25 @@ tbody.collapse.show {
     border-radius: .25rem;
 }
 
+.page-cursor {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    border: 1px solid #dee2e6;
+    margin: 0 1px;
+}
+
 .page-link {
     position: relative;
-    display: block;
-    padding: .5rem .75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-left: -1px;
     line-height: 1.25;
+    width: 40px;
+    height: 40px;
     color: #007bff;
     background-color: #fff;
     border: 1px solid #dee2e6;
@@ -30451,15 +30464,18 @@ textarea.form-control {
     white-space: nowrap;
 }
 
+.pagination .pages {
+    overflow: hidden;
+}
+
 .pagination .page-item .page-link {
-    padding: 1.0rem 1.3rem;
     color: #626262;
 }
 
 .pagination .page-item.active .page-link {
     background: #84ba3f;
-    border-color: #84ba3f;
-    color: #ffffff;
+    border: 1px solid #84ba3f;
+    color: #fff;
 }
 
 /* style-customizer */

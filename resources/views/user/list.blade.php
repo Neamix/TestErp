@@ -92,7 +92,7 @@ User List
                     $('.users-list').html('');
                     
                     if(reloadPager) {
-                        createPagination(e.total,e.per_page,$('.pagination'));
+                        createPagination(e.total,e.per_page,$('.pagination'),'{{ Auth::user()->lang }}');
                         reloadPager = false;
                     }
                   
