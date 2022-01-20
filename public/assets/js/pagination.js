@@ -1,6 +1,5 @@
 let margin;
 function createPagination(total,per_page,container,lang) {
-    console.log(lang);
     margin = lang == 'ar' ? 'margin-right' : 'margin-left';
     let countPages = Math.ceil(total/per_page);
 
@@ -20,8 +19,6 @@ function createPagination(total,per_page,container,lang) {
         container.append('<li class="next-page page-cursor"><i class="ti-angle-left"></i></li>');
    }
 
-    let pageItem = container.find('.pages-inner').children()[0];
-    console.log($('.page-link').width());
     container.children('.pages').css('width',($('.page-link').width() + 1)  * 5 + 1)
 
     $('.page-item').eq(0).addClass('active');
@@ -36,10 +33,6 @@ $('.pagination').on('click','.prev-page',function(){
     $('.page-item.active').prev().click();
     $('.pagination .pages-inner').css(margin,-($('.page-link').width() + 1)  * $('.page-item.active').index());
 });
-
-$('.page-item').on('click',function(){
-    alert($(this).index(),$('.page-item.active').index());
-}); 
 
 function setPage(page_no) {
     $('input.page-indicator').val(page_no);
