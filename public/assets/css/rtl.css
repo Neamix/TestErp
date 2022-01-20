@@ -243,7 +243,7 @@ code,
 kbd,
 pre,
 samp {
-    font-family: monospace, monospace;
+    /* font-family: monospace, monospace; */
     font-size: 1em;
 }
 
@@ -583,7 +583,7 @@ pre,
 samp {
     direction: ltr;
     unicode-bidi: bidi-override;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    /* font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
 }
 
 code {
@@ -6117,7 +6117,7 @@ button.close {
     z-index: 1070;
     display: block;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -6242,7 +6242,7 @@ button.close {
     z-index: 1060;
     display: block;
     max-width: 276px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -10950,7 +10950,7 @@ a.fc-more:hover {
     height: 1em;
     line-height: 1em;
     font-size: 1em;
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -12809,7 +12809,7 @@ span.CodeMirror-selectedtext {
     width: 100%;
     padding: 10px;
     margin-bottom: 0;
-    font-family: Menlo, Monaco, monospace, sans-serif;
+    /* font-family: Menlo, Monaco, monospace, sans-serif; */
     font-size: 14px;
     color: #ccc;
     background-color: #222;
@@ -25854,7 +25854,7 @@ h5,
 h6 {
     color: #323232;
     font-weight: 500;
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
     margin-bottom: 0.5rem;
 }
 
