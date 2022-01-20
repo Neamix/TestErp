@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'],function(){
         Route::post('/avatar',[UserController::class,'avatar'])->name('user.avatar');
         Route::post('/priviledge/{user}',[UserController::class,'priviledges'])->name('user.priviledge');
         Route::post('/state/{user}',[UserController::class,'toggleActive'])->name('user.state');
+        Route::post('/delete/{user}',[UserController::class,'destroy'])->middleware('checkPassword')->name('user.destroy');
     });
 });
 

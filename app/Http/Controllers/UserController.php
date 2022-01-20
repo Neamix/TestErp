@@ -69,4 +69,9 @@ class UserController extends Controller
    public function toggleActive(User $user) {
       return $user->toggleActive();
    }
+
+   public function destroy(User $user) {
+      $user->delete();
+      return redirect()->route('user.filter');
+   }
 }

@@ -35,5 +35,9 @@ return [
     'suspend_user' => 'تعليق المستخدم',
     'activate_user' => ' تفعيل المستخدم',
     'delete_user' => 'مسح المستخدم',
-    'trash_user' => 'القاء المستخدم في المهملات' 
+    'trash_user' => 'القاء المستخدم في المهملات',
+    'please_confirm_your_password' => 'من فضلك اكد الرمز السري الخاص بك',
+    'confirm_your_password' => 'اكد الرمز السري الخاص بك',
+    'confirm' => 'تاكيد',
+    'enter_name' => 'ادخل اسم'
 ];

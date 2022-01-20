@@ -6033,6 +6033,10 @@ button.close {
     padding: 1rem;
 }
 
+.modal .modal-body .model-alert-image {
+    width: 60px;
+}
+
 .modal-footer {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -29848,6 +29852,10 @@ select.form-control-sm:not([size]):not([multiple]) {
 .login-fancy-bg {
     position: relative;
     z-index: 1;
+}
+
+.login-logo {
+    width: 97px;
 }
 
 .height-100vh {

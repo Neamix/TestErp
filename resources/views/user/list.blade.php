@@ -25,7 +25,7 @@ User List
                 <div class="row">
                     <div class="col-md-3">
                         <form class="search_form">
-                            <input type="search" placeholder="Enter name " class="form-control search-user">
+                            <input type="search" placeholder="{{ __('system.enter_name') }}" class="form-control search-user">
                         </form>
                     </div>
                     <div class="col-md-3">

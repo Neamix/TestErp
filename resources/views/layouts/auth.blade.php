@@ -21,7 +21,17 @@
               href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
     
         <!-- css -->
-        <link href="{{ URL::asset('assets/css/ltr.css') }}" rel="stylesheet">
+        @auth
+            @if(Auth::user()->lang == 'en') 
+                <link href="{{ URL::asset('assets/css/ltr.css') }}" rel="stylesheet">
+            @else
+                <link href="{{ URL::asset('assets/css/rtl.css') }}" rel="stylesheet">
+            @endif
+        @endauth
+
+        @guest
+            <link href="{{ URL::asset('assets/css/ltr.css') }}" rel="stylesheet">
+        @endguest
     
     </head>
     

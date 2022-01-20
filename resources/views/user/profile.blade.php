@@ -49,15 +49,14 @@
                                 <div class="action d-flex mt-4">
                                     <div class="fs-small cursor-pointer"><i class="ti-pencil mr-2"></i>Edit</div>
                                     <div class="fs-small ml-2 cursor-pointer"><i class="ti-trash mr-2"></i>Trash</div>
-                                    <div class="fs-small ml-2 cursor-pointer"><i class="ti-na mr-2"></i>Delete</div>
-                                    @if($user->active)
-                                    <div class="fs-small ml-2 cursor-pointer"><i class="ti-control-pause mr-2"></i>Suspend</div>
-                                    @endif
-                                    @if(!$user->active)
-                                    <div class="fs-small ml-2 cursor-pointer"><i class="ti-control-play mr-2"></i>Activate</div>
-                                    @endif
+                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('user.destroy',['user'=>$user->id]) }}" redirect="{{ route('user.filter') }}"><i class="ti-na mr-2 ml-2"></i>Delete</div>
+                                    <div class="fs-small ml-2 cursor-pointer state-btn @if(!$user->active) d-none @endif"><i class="ti-control-pause mr-2 ml-2"></i>Suspend</div>
+                                    <div class="fs-small ml-2 cursor-pointer state-btn @if($user->active) d-none @endif"><i class="ti-control-play mr-2 ml-2"></i>Activate</div>
                                 </div>
                             @endif
+                            @isset($passwordError)
+                                <p class="danger fs-sm">{{ $passwordError }}</p>
+                            @endisset
                         </div>
                     </div>
                 </div>

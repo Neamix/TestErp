@@ -2,10 +2,30 @@
 $( "#datepicker" ).datepicker();
 
 //ajax setup
-console.log($('meta[name="csrf-token"]').attr('content'))
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
+$('.password_confirm_need').on('click',function() {
+    $('.confirmPasswordForm').attr('action',$(this).attr('data-url'));
+    $('.confirmPasswordForm').attr('redirect',$(this).attr('redirect'));
+});
+
+$('.confirmPasswordForm').on('submit',function(e){
+    e.preventDefault();
+    $.ajax({
+        url: $(this).attr('action'),
+        type: $(this).attr('method'),
+        data: {password: $('.password-input').val()},
+        success: (e) => {
+            console.log($(this).attr('redirect'));
+            window.location.href = $(this).attr('redirect');
+        },
+        error: function(e) {
+            $('.confirm-error').text(e.responseJSON.message);
+        }
+    })
+})
 

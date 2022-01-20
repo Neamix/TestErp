@@ -33,5 +33,9 @@ return [
     'suspend_user' => 'Suspend user',
     'activate_user' => 'Activate user',
     'delete_user' => 'Delete user',
-    'trash_user' => 'Trash user' 
+    'trash_user' => 'Trash user',
+    'please_confirm_your_password' =>  'Please confirm your password',
+    'confirm_your_password' => 'Confirm your password',
+    'confirm' => 'Confirm',
+    'enter_name' => 'Enter name'
 ];
