@@ -20,7 +20,6 @@ $('.confirmPasswordForm').on('submit',function(e){
         type: $(this).attr('method'),
         data: {password: $('.password-input').val()},
         success: (e) => {
-            console.log($(this).attr('redirect'));
             window.location.href = $(this).attr('redirect');
         },
         error: function(e) {

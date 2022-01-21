@@ -29,8 +29,16 @@ class Gates {
             $gate = Gate::allows('edit-user');
         }
 
+        if($name == 'user.index') {
+            $gate = Gate::allows('edit-user');
+        }
+
         if($name == 'user.state') {
             $gate = Gate::allows('suspend-user');
+        }
+
+        if($name == 'user.soft' || $name == 'user.restore') {
+            $gate = Gate::allows('trash-user');
         }
         
         return $gate;

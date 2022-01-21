@@ -11,13 +11,14 @@ use App\Traits\upsertTrait;
 use App\Traits\validationTrait;
 use App\Traits\generateToken;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
-    use Notifiable,upsertTrait,validationTrait,generateToken;
+    use Notifiable,upsertTrait,validationTrait,generateToken,SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -65,12 +66,13 @@ class User extends Authenticatable
     }
 
     public function updateInstance($data) {
+        $password = $this->password ?? null;
         $user = User::updateOrCreate(
             ['id' => $this->id ?? null],
             [
                 'email' => $data['email'],
                 'name'  => $data['name'],
-                'password' => isset($data['password']) ? Hash::make($data['password']) : null,
+                'password' => isset($data['password']) ? Hash::make($data['password']) : $password,
                 'grade'  => $data['grade'] ?? null,
                 'type'   => $data['type'],
                 'join_date' => Carbon::now(),
@@ -129,7 +131,6 @@ class User extends Authenticatable
     public function hasPriviledge($priviledge,$super = false) {
 
         $hasPriviledge = ($super) ?  $this->priviledges->whereId('id',[SUPER_ADMIN,$priviledge]) : $this->priviledges->whereIn('id',[SUPER_ADMIN,SYSTEM_ADMIN,$priviledge]);
-
         if($hasPriviledge->count()) {
             return true;
         } else {
@@ -152,6 +153,19 @@ class User extends Authenticatable
         return self::validationResult('success',__('validation.user_priviledges_has_been_modified'));
 
     }
+
+    public function allowedToActionOn() {
+
+        if($this->hasPriviledge(SUPER_ADMIN) || $this->hasPriviledge(SYSTEM_ADMIN)) {
+            if(Auth::user()->hasPriviledge(SUPER_ADMIN)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        return true;
+    } 
 
     public function toggleActive() {
         if( $this->active == ACTIVE ) {

@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Policies\UserPolicy;
+use App\Student;
+use App\Teacher;
 use App\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -54,17 +57,13 @@ Route::group(['middleware' => 'auth'],function(){
         Route::post('/avatar',[UserController::class,'avatar'])->name('user.avatar');
         Route::post('/priviledge/{user}',[UserController::class,'priviledges'])->name('user.priviledge');
         Route::post('/state/{user}',[UserController::class,'toggleActive'])->name('user.state');
-        Route::post('/delete/{user}',[UserController::class,'destroy'])->middleware('checkPassword')->name('user.destroy');
+        Route::post('/delete/{user}',[UserController::class,'destroy'])->middleware(['checkPassword','checkAuthority'])->name('user.destroy');
+        Route::post('/forcedelete/{user}',[UserController::class,'forceDelete'])->middleware(['checkPassword','checkAuthority'])->name('user.force');
+        Route::post('/softdelete/{user}',[UserController::class,'delete'])->middleware(['checkPassword','checkAuthority'])->name('user.soft');
+        Route::post('/restore/{user}',[UserController::class,'restore'])->middleware(['checkPassword','checkAuthority'])->name('user.restore');
     });
 });
 
 Route::get('/test',function(){
-    // $request = [
-    //     'name' => 'Abdelrhman',
-    //     'type' => 1,
-    //     'active' => 1
-    // ];
-    // dd(User::filter($request)->toArray());
-    // $jobs = [1,2,3];
-    // dd(Arr::random($jobs,1));
+   dd( Student::all()->toArray() );
 });

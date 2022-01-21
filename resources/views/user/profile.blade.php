@@ -45,13 +45,23 @@
                                     {{__('system.student')}} 
                                 @endif 
                             </p>
-                            @if(Auth::id() != $user->id)
+                            @if(Auth::id() != $user->id && $user->allowedToActionOn())
                                 <div class="action d-flex mt-4">
-                                    <div class="fs-small cursor-pointer"><i class="ti-pencil mr-2"></i>Edit</div>
-                                    <div class="fs-small ml-2 cursor-pointer"><i class="ti-trash mr-2"></i>Trash</div>
+                                    @can('edit-user')
+                                    <div class="fs-small cursor-pointer"><i class="ti-pencil mr-2"></i><a href="{{ route('user.edit',['user'=>$user->id]) }}">Edit</a></div>
+                                    @endcan
+                                    @can('trash-user')
+                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('user.soft',['user' =>$user->id]) }}" redirect="{{ route('user.filter') }}"><i class="ti-trash mr-2"></i>Trash</div>
+                                    @endcan
+                                    @can('delete-user')
                                     <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('user.destroy',['user'=>$user->id]) }}" redirect="{{ route('user.filter') }}"><i class="ti-na mr-2 ml-2"></i>Delete</div>
+                                    @endcan
+                                    @can('suspend-user')
                                     <div class="fs-small ml-2 cursor-pointer state-btn @if(!$user->active) d-none @endif"><i class="ti-control-pause mr-2 ml-2"></i>Suspend</div>
+                                    @endcan
+                                    @can('suspend-user')
                                     <div class="fs-small ml-2 cursor-pointer state-btn @if($user->active) d-none @endif"><i class="ti-control-play mr-2 ml-2"></i>Activate</div>
+                                    @endcan
                                 </div>
                             @endif
                             @isset($passwordError)
@@ -60,7 +70,8 @@
                         </div>
                     </div>
                 </div>
-                @if(Auth::id() != $user->id)
+                @if(Auth::id() != $user->id && $user->allowedToActionOn()) 
+
                 <div class="privilleges mt-5 pt-4">
                     <h2 class="fs-medium mb-2">{{ $user->name }}'s Priviledges</h2>
                     <div class="row">

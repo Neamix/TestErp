@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\Authorized;
 use App\Http\Middleware\Authuticate;
+use App\Http\Middleware\checkAuthority;
 use App\Http\Middleware\checkPassword;
 use App\Http\Middleware\LocalizationMiddleware;
 use Illuminate\Auth\Middleware\Authorize;
@@ -70,6 +71,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'checkPassword' => checkPassword::class
+        'checkPassword' => checkPassword::class,
+        'checkAuthority' => checkAuthority::class
     ];
 }

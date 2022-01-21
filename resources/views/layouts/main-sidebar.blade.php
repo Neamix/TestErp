@@ -16,6 +16,7 @@
                     @endcan
                     <!-- menu title -->
                     <!-- menu item Elements-->
+                    @canany(['editUser', 'viewAny'], Auth::user())
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
                             <div class="pull-left"><i class="ti-palette"></i><span
@@ -23,15 +24,31 @@
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="elements" class="collapse" data-parent="#sidebarnav">
-                            @can('editUser',Auth::user())
-                            <li><a href="{{ route('user.index') }}">{{ __('system.create_user')  }}</a></li>
-                            @endcan
-                            @can('viewAny',Auth::user())
-                            <li><a href="{{ route('user.filter') }}">{{ __('system.user_list')  }}</a></li>
-                            @endcan
-                        </ul>
+                            <ul id="elements" class="collapse" data-parent="#sidebarnav">
+                                @can('editUser',Auth::user())
+                                <li><a href="{{ route('user.index') }}">{{ __('system.create_user')  }}</a></li>
+                                @endcan
+                                @can('viewAny',Auth::user())
+                                <li><a href="{{ route('user.filter') }}">{{ __('system.user_list')  }}</a></li>
+                                @endcan
+                            </ul>    
                     </li>
+                    @endcanany
+                    @canany(['trash-user'], Auth::user())
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#trash">
+                            <div class="pull-left"><i class="ti-trash"></i><span
+                                    class="right-nav-text">{{ __('system.trash_bin') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="trash" class="collapse" data-parent="#sidebarnav">
+                            @can('trash-user',Auth::user())
+                            <li><a href="{{ route('user.index') }}">{{ __('system.user_list')  }}</a></li>
+                            @endcan
+                        </ul>    
+                    </li>
+                    @endcanany
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#subject">
                             <div class="pull-left"><i class="ti-palette"></i><span
