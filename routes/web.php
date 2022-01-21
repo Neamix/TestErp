@@ -31,13 +31,18 @@ Route::group(['middleware' => 'auth'],function(){
         if(Auth::user()->hasPriviledge(SYSTEM_ADMIN)) {
             return view('dashboard');
         } else {
-            return redirect()->route('user.profile');
+            return redirect()->route('user.myprofile');
         }
 
     })->name('dashboard');
     
     //Set Localization 
     Route::get('/lang/{lang}',[UserController::class,'setLocal'])->name('lang');
+
+    //trash bin
+    Route::get('/trash/{model}',function(){
+        return view('trash')->with('users',User::onlyTrashed()->get());
+    })->name('trash');
     
     Route::group(['prefix' => 'user'],function(){
         Route::get('/',[UserController::class,'index'])->name('user.index');

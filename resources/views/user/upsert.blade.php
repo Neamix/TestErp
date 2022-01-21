@@ -74,6 +74,7 @@
 @endsection
 @section('js')
 <script>
+    let create_state = ( $('#user_name').val().length ) ? false : true; 
     $('#upsertUser').on('submit', function (e) {
         //stop submit action
         e.preventDefault();
@@ -157,8 +158,10 @@
                             confirmButtonText: 'Cool',
                             showConfirmButton: false
                         })
-
-                        $('#upsertUser').trigger("reset");
+                        
+                        if( create_state ) {
+                            $('#upsertUser').trigger("reset");
+                        }
                     } else {
                         Swal.fire({
                             title: 'Error!',

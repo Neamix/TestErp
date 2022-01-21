@@ -41,5 +41,10 @@ return [
     'User_list' => 'User List',
     'all_user' => 'All User',
     'active_user' => 'Active User',
-    'suspended_user' => 'Supended User'
+    'suspended_user' => 'Supended User',
+    'name' => 'Name',
+    'id' => 'id',
+    'email' => 'Email',
+    'operation' => 'Operation',
+    'trash_bin' => 'Trash Bin'
 ];

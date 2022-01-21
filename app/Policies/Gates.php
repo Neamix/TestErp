@@ -12,6 +12,8 @@ class Gates {
         Gate::define('view-user',[UserPolicy::class,'viewAny']);
         Gate::define('edit-user',[UserPolicy::class,'editUser']);
         Gate::define('suspend-user',[UserPolicy::class,'suspendUser']);
+        Gate::define('delete-user',[UserPolicy::class,'deleteUser']);
+        Gate::define('trash-user',[UserPolicy::class,'trashUser']);
 
     }
 

@@ -43,7 +43,6 @@
             $('.avatar-footer').addClass('d-flex').removeClass('d-none');
         } else {
             readyToUpload = false;
-            console.log($('.image-preview'));
             $('.image-preview').removeClass('d-flex').addClass('d-none');
             $('.drag-zone').addClass('d-flex').removeClass('d-none');
             $('.image-preview img').attr('src','');

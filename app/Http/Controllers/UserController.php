@@ -9,6 +9,7 @@ use App\Priviledge;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Traits\validationTrait;
 
 class UserController extends Controller
 {
@@ -71,7 +72,21 @@ class UserController extends Controller
    }
 
    public function destroy(User $user) {
-      $user->delete();
+      $user->forceDelete();
       return redirect()->route('user.filter');
+   }
+
+   public function forceDelete($user) {
+      User::onlyTrashed()->where('id',$user)->forceDelete();
+   }
+
+   public function delete(User $user) {
+      $user->delete();
+      return 'deleted';
+   }
+
+   public function restore($user) {
+      User::onlyTrashed()->where('id',$user)->restore();
+      return self::validationTrait('success','User has been restored');
    }
 }
