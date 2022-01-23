@@ -14,4 +14,8 @@ class Student extends Model
             $builder->where('type', STUDENT);
         });
     }
+
+    public function Courses() {
+        return $this->hasMany(Course::class);
+    }
 }

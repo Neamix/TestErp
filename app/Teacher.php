@@ -10,8 +10,12 @@ class Teacher extends Model
     protected $table = 'users';
 
     protected static function booted() {
-        static::addGlobalScope('teachers', function (Builder $builder) {
+        static::addGlobalScope(function (Builder $builder) {
             $builder->where('type', TEACHER);
         });
+    }
+
+    public function Courses() {
+        return $this->hasMany(Course::class);
     }
 }
