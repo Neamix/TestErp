@@ -33,7 +33,7 @@ class UserController extends Controller
    }
 
    public function filter(Request $request) {
-      $users = User::filter($request->all())->paginate(15);
+      $users = User::filter($request->all())->paginate($request['limit'] ?? 15);
 
       if( $request->ajax() ) {
          return $users;
