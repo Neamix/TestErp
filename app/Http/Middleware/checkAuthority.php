@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +20,9 @@ class checkAuthority
 
         if($request->route('user')) {
             $user = $request->route('user');
+
+            if(gettype($user) == 'string') $user = User::onlyTrashed()->where('id',$user)->first();
+            
             if($user->id != Auth::id()) {
                 if( ! $user->allowedToActionOn()) {
                     return abort('417','unAuthorized');

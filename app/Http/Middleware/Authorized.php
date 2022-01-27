@@ -19,7 +19,7 @@ class Authorized
     public function handle($request, Closure $next)
     {
         $name = $request->route()->getName();
-        
+
         if(! Gates::resolve($name) ) {
             abort(404);
         } 
