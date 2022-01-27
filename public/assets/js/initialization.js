@@ -1,6 +1,3 @@
-//datepicker init
-$( "#datepicker" ).datepicker();
-
 //ajax setup
 $.ajaxSetup({
     headers: {
@@ -26,5 +23,18 @@ $('.confirmPasswordForm').on('submit',function(e){
             $('.confirm-error').text(e.responseJSON.message);
         }
     })
-})
+});
 
+$(document).on("click", function(e){
+    let key = $(e.target).attr('key');
+    $(`.dropdown-toggle[key_menu != "${key}"]`).fadeOut();
+});
+
+$('.dropdown-toggle').on('click',function(e){
+    e.stopPropagation();
+});
+
+$('.data-row').on('click',function(){
+    window.location = $(this).attr('data-href');
+    return false;
+});

@@ -1,11 +1,16 @@
 <?php
 
+use App\Course;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TrashController;
 use App\Http\Controllers\UserController;
 use App\Policies\UserPolicy;
 use App\Student;
 use App\Teacher;
 use App\User;
+use Carbon\Carbon;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
@@ -43,9 +48,7 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get('/lang/{lang}',[UserController::class,'setLocal'])->name('lang');
 
     //trash bin
-    Route::get('/trash/{model}',function(){
-        return view('trash')->with('users',User::onlyTrashed()->get());
-    })->name('trash');
+    Route::get('/trash/{model}',[TrashController::class,'index'])->name('trash');
     
     Route::group(['prefix' => 'user'],function(){
         Route::get('/',[UserController::class,'index'])->name('user.index');
@@ -62,8 +65,29 @@ Route::group(['middleware' => 'auth'],function(){
         Route::post('/softdelete/{user}',[UserController::class,'delete'])->middleware(['checkPassword','checkAuthority'])->name('user.soft');
         Route::post('/restore/{user}',[UserController::class,'restore'])->middleware(['checkPassword','checkAuthority'])->name('user.restore');
     });
+
+    Route::group(['prefix' => 'subject'],function(){
+        Route::get('/',[CourseController::class,'index'])->name('course.index');
+        Route::get('/edit/{course}',[CourseController::class,'edit'])->name('course.edit');
+        Route::post('/upsert/{course?}',[CourseController::class,'upsert'])->name('course.upsert');
+        Route::get('/list',[CourseController::class,'filter'])->name('course.list');
+        Route::get('/scedule',[CourseController::class,'schedule'])->name('course.schedule');
+        Route::post('/destroy/{course}',[CourseController::class,'destroy'])->name('course.destroy');
+        Route::post('/delete/{course}',[CourseController::class,'delete'])->name('course.soft');
+        Route::post('/restore/{course}',[CourseController::class,'restore'])->name('course.restore');
+        Route::get('/profile/{course}',[CourseController::class,'profile'])->name('course.profile');
+    });
+    
 });
 
 Route::get('/test',function(){
-   dd( Student::all()->toArray() );
+    $days = [
+        'saturday',
+        'sunday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday'
+    ];
+    dd(Carbon::subRealDecades(2));
 });

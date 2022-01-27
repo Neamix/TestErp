@@ -47,7 +47,7 @@
                                 <label for="datepicker">
                                     {{ __('system.user_join_date') }}
                                 </label>
-                                <input class="form-control" type="text" id="datepicker" placeholder="dd/mm/yy" value="@isset($user) {{ $user['join_date'] }} @endisset"></p>
+                                <input class="form-control" type="date" id="datepicker" placeholder="dd/mm/yy" value="@isset($user) {{ $user['join_date'] }} @endisset"></p>
                                 <p class="error" id="user_date_error"></p>
                             </div>
                             <div class="col-md-6">
@@ -66,6 +66,24 @@
                         <p>Add User</p>
                     </button>
                 </form>
+                <table id="table_id" class="display">
+                    <thead>
+                        <tr>
+                            <th>Column 1</th>
+                            <th>Column 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Row 1 Data 1</td>
+                            <td>Row 1 Data 2</td>
+                        </tr>
+                        <tr>
+                            <td>Row 2 Data 1</td>
+                            <td>Row 2 Data 2</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

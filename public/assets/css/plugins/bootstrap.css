@@ -2896,6 +2896,10 @@ tbody.collapse.show {
   margin: 0;
   opacity: 0; }
 
+.overlayed {
+  z-index: 1000;
+}
+
 .custom-file-input:focus ~ .custom-file-control {
   border-color: #80bdff;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }

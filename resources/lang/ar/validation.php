@@ -11,5 +11,12 @@ return [
     'only_type_are_allowed' => 'فقط مسموح بيهم  [jpg,png,jpeg]',
     'this_image_is_very_small_the_avatar_must_be_at_least_624_px_X_596_px' => 'this image is very small the avatar must be at least 624 px X 596 px',
     'this_image_is_very_large_the_avatar_must_be_at_max_1000_px_X_990_px'  => 'this image is very large the avatar must be at max 1000 px X 990 px',
-    'wronge_password' => 'الرمز السري خاطي'
+    'wronge_password' => 'الرمز السري خاطي',
+    'schedule_interferance_with_the_following_teachers' => 'تعارض للجدول الخاص بالمدرسيين الاتي ذكرهم :teachers',
+    'name_is_required' => 'يجب ان تضع اسم',
+    'start_time_is_required' => 'يجب ان تضع ميعاد البدء',
+    'end_time_is_required' => 'يجب ان تضع معاد لالانتهاء',
+    'student_is_required'=> 'يجب ان تضع طلاب',
+    'teacher_is_required' => 'يجب ان تضع معلمين',
+    'end_time_must_be_after_the_start_time' => 'ميعاد الانتهاء يجب ان يكون بعد ميعاد البدء'
 ];

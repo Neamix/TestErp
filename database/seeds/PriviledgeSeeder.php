@@ -81,5 +81,33 @@ class PriviledgeSeeder extends Seeder
             'parent_id' => null,
             'name' => 'SYSTEM Admin'
         ]);
+
+        Priviledge::updateOrCreate([
+            'id' => 11,
+            'constant' => 'VIEW_SUBJECT_LIST',
+            'parent_id' => null,
+            'name' => 'View subject list'
+        ]);
+
+        Priviledge::updateOrCreate([
+            'id' => 12,
+            'constant' => 'DELETE_SUBJECT',
+            'parent_id' => VIEW_SUBJECT_LIST,
+            'name' => 'Delete subject'
+        ]);
+
+        Priviledge::updateOrCreate([
+            'id' => 13,
+            'constant' => 'EDIT_SUBJECT',
+            'parent_id' => VIEW_SUBJECT_LIST,
+            'name' => 'Edit subject'
+        ]);
+
+        Priviledge::updateOrCreate([
+            'id' => 14,
+            'constant' => 'TRASH_SUBJECT',
+            'parent_id' => VIEW_SUBJECT_LIST,
+            'name' => 'Trash subject'
+        ]);
     }
 }

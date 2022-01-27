@@ -104,24 +104,20 @@
                         <div class="col-md-6">
                             <form class="privilledge-form">
                                 <div class="form-group">
-                                    <input class="privillege-input" type="checkbox" value="VIEW_USER_LIST">
-                                    <label>View Users List</label>
+                                    <input class="privillege-input" type="checkbox" value="{{ VIEW_SUBJECT_LIST }}" data_child="subject" name="subject">
+                                    <label>{{ __('system.view_subject_list') }}</label>
                                     <div class="child-privillege ml-3">
                                         <div class="form-group mb-2">
-                                            <input class="privillege-input" type="checkbox" value="EDIT_USER">
-                                            <label>Edit Users</label>
+                                            <input class="privillege-input" type="checkbox" value="{{ EDIT_SUBJECT }}" parent_id="{{ VIEW_SUBJECT_LIST }}" data_parent="subject">
+                                            <label>{{ __('system.edit_subject') }}</label>
                                         </div>
                                         <div class="form-group mb-2">
-                                            <input class="privillege-input" type="checkbox">
-                                            <label>Delete Users</label>
+                                            <input class="privillege-input" type="checkbox" value="{{ DELETE_USER }}" parent_id="{{ VIEW_SUBJECT_LIST }}" data_parent="subject">
+                                            <label>{{ __('system.delete_subject') }}</label>
                                         </div>
                                         <div class="form-group mb-2">
-                                            <input class="privillege-input" type="checkbox">
-                                            <label>Suspend Users</label>
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <input class="privillege-input" type="checkbox">
-                                            <label>Trash Users</label>
+                                            <input class="privillege-input" type="checkbox" value="{{ TRASH_USER }}" parent_id="{{ VIEW_SUBJECT_LIST }}" data_parent="subject">
+                                            <label>{{ __('system.trash_subject') }}</label>
                                         </div>
                                     </div>
                                 </div>

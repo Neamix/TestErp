@@ -156,6 +156,7 @@ class User extends Authenticatable
 
     public function allowedToActionOn() {
 
+        //prevent anyone from remove super admin except another super admin
         if($this->hasPriviledge(SUPER_ADMIN) || $this->hasPriviledge(SYSTEM_ADMIN)) {
             if(Auth::user()->hasPriviledge(SUPER_ADMIN)) {
                 return true;

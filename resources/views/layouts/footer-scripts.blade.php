@@ -1,5 +1,10 @@
 <!-- jquery -->
 <script src="{{ URL::asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+<!--Localization-->
+<script>
+    window.lang = '{{ Auth::user()->lang }}'
+</script>
+<script src="{{ URL::asset('assets/js/translate.js') }}"></script>
 <!-- plugins-jquery -->
 <script src="{{ URL::asset('assets/js/plugins-jquery.js') }}"></script>
 <!-- plugin_path -->
@@ -26,7 +31,6 @@
 <!-- sweetalert2 -->
 <script src="{{ URL::asset('assets/js/sweetalert2.js') }}"></script>
 <!-- toastr -->
-@yield('js')
 <script src="{{ URL::asset('assets/js/toastr.js') }}"></script>
 <!-- validation -->
 <script src="{{ URL::asset('assets/js/validation.js') }}"></script>
@@ -36,5 +40,8 @@
 <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
 <!-- jquery ui -->
 <script src="https://code.jquery.com/ui/1.13.0-rc.3/jquery-ui.min.js" integrity="sha256-R6eRO29lbCyPGfninb/kjIXeRjMOqY3VWPVk6gMhREk=" crossorigin="anonymous"></script>
+
+@yield('js')
+
 
 

@@ -15,7 +15,7 @@ class Teacher extends Model
         });
     }
 
-    public function Courses() {
-        return $this->hasMany(Course::class);
+    public function courses() {
+        return $this->belongsToMany(Course::class);
     }
 }

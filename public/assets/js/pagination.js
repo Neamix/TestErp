@@ -11,12 +11,14 @@ function createPagination(total,per_page,container,lang) {
         container.find('.pages-inner').append(`<li class="page-item" value="${i}"><span class="page-link">${i}</span></li>`);
     }
 
-   if( lang == 'en' ) {
-        container.prepend('<li class="prev-page page-cursor"><i class="ti-angle-left"></i></li>');
-        container.append('<li class="next-page page-cursor"><i class="ti-angle-right"></i></li>');
-   } else {
-        container.prepend('<li class="prev-page page-cursor"><i class="ti-angle-right"></i></li>');
-        container.append('<li class="next-page page-cursor"><i class="ti-angle-left"></i></li>');
+   if(countPages > 5) {
+        if( lang == 'en' ) {
+                container.prepend('<li class="prev-page page-cursor"><i class="ti-angle-left"></i></li>');
+                container.append('<li class="next-page page-cursor"><i class="ti-angle-right"></i></li>');
+        } else {
+                container.prepend('<li class="prev-page page-cursor"><i class="ti-angle-right"></i></li>');
+                container.append('<li class="next-page page-cursor"><i class="ti-angle-left"></i></li>');
+        }
    }
 
     container.children('.pages').css('width',($('.page-link').width() + 1)  * 5 + 1)

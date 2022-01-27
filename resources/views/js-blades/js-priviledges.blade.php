@@ -60,7 +60,11 @@
             method: 'post',
             data: {'priviledges': priviledges_array},
             success: function() {
-                console.log('here');
+                Swal.fire({
+                    title: 'Success',
+                    icon: 'success',
+                    showConfirmButton: false
+                });
             }
         })
     })

@@ -2418,6 +2418,18 @@ select.form-control-lg:not([size]):not([multiple]) {
     height: calc(2.875rem + 2px);
 }
 
+/*select-searchbox*/
+.select-picker .drop-down-search-list {
+    z-index: 1000;
+}
+
+.select-picker .drop-down-search-list li:hover,
+.select-picker li.active {
+    background-color: var(--blue) !important;
+    color: var(--white);
+    cursor: pointer;
+}
+
 .form-group {
     margin-bottom: 1rem;
 }

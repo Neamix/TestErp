@@ -16,7 +16,20 @@ define('EDIT_USER_PRIVILEDGES',7);
 define('REMOVE_USER_PRIVILEDGES',8);
 define('SUPER_ADMIN',9);
 define('SYSTEM_ADMIN',10);
+define('VIEW_SUBJECT_LIST',11);
+define('DELETE_SUBJECT',12);
+define('EDIT_SUBJECT',13);
+define('TRASH_SUBJECT',14);
 
 //suspend 
 define('ACTIVE',1);
 define('SUSPEND',2);
+
+//weeks
+define('MONDAY',1);
+define('THUSDAY',2);
+define('WEDNESDAY',3);
+define('THURSDAY',4);
+define('FRIDAY',5);
+define('SATURDAY',6);
+define('SUNDAY',7);
