@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
-    use Notifiable,upsertTrait,validationTrait,generateToken,SoftDeletes;
+    use Notifiable,upsertTrait,generateToken,SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -63,6 +63,13 @@ class User extends Authenticatable
     public function createInstance() {
         $user = User::create([]);
         return $user->updateInstance($this->toArray());
+    }
+
+    public function validationResult($result,$message) {
+        return [
+            'result' => $result,
+            'message' => $message
+        ];
     }
 
     public function updateInstance($data) {
