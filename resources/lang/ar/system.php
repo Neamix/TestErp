@@ -74,5 +74,7 @@ return [
     'courses_list'   => 'قائمة المواد',
     'student_assigned_to_course' => 'الطلاب المسجلين في المادة',
     'teacher_assigned_to_course' => 'المعلميين المسجلين في المادة',
-    'trash_bin' => 'سلة المهملات'
+    'trash_bin' => 'سلة المهملات',
+    'dash_board' => 'لوحة التحكم',
+    'courses'    => 'المواد'
 ];

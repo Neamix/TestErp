@@ -72,5 +72,7 @@ return [
     'courses_list'   => 'Courses List',
     'student_assigned_to_course' => 'Student assigned to course',
     'teacher_assigned_to_course' => 'Teacher assigned to course',
-    'trash_bin' => 'Trash bin'
+    'trash_bin' => 'Trash bin',
+    'dash_board' => 'Dash Board',
+    'courses'   => 'Courses'
 ];
