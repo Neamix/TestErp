@@ -47,10 +47,10 @@ class superadmin extends Command
         if( filter_var($email,FILTER_VALIDATE_EMAIL) ) {
 
             $existUser = User::where('email',$email)->pluck('id')->toArray();
-
-            if(  Count($existUser) ) {
+            
+            if(  count($existUser) ) {
                 DB::table('user_priviledge')->insert([
-                    'user_id' => $existUser,
+                    'user_id' => $existUser[0],
                     'priviledge_id' => SUPER_ADMIN,
                 ]);
 
