@@ -8,8 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\upsertTrait;
-use App\Traits\validationTrait;
 use App\Traits\generateToken;
+use App\Traits\validationTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
-    use Notifiable,upsertTrait,generateToken,SoftDeletes;
+    use Notifiable,upsertTrait,generateToken,SoftDeletes,validationTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -65,7 +65,7 @@ class User extends Authenticatable
         return $user->updateInstance($this->toArray());
     }
 
-    public function validationResult($result,$message) {
+    static function validationResult($result,$message) {
         return [
             'result' => $result,
             'message' => $message

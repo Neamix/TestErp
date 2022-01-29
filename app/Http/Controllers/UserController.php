@@ -13,7 +13,6 @@ use App\Traits\validationTrait;
 
 class UserController extends Controller
 {
-   use validationTrait;
 
    public function setLocal($local) {
       Auth::user()->setLocal($local);
@@ -89,6 +88,6 @@ class UserController extends Controller
 
    public function restore($user) {
       User::onlyTrashed()->where('id',$user)->restore();
-      return self::validationResult('success','User has been restored');
+      return User::validationResult('success','User has been restored');
    }
 }
