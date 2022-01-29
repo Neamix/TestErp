@@ -28,9 +28,10 @@
                   
                     users.forEach(user => {
                         console.log(user);
-                        let str = `<div class="col-md-4">
+                        let str = `<div class="col-md-4 position-relative">
                                         <div class="card mt-4">
-                                            <div class="card-body card-user d-flex">
+                                            <div class="card-body card-user d-flex position-relative">
+                                                <a href="/user/profile/${user.id}" class="position-absolute top-0 left-0 w-100 h-100"></a>
                                                 <div class="user-image w-25">
                                                     <img src="/assets/images/users/${user.avatar}" alt="user" class="w-100 rounded-circle">
                                                 </div>
