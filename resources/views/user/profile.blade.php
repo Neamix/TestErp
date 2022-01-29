@@ -20,15 +20,15 @@
 @section('content')
 <!-- row -->
 <div class="row">
-    <div class="col-md-12 mb-30">
+    <div class="col-md-12 mb-30 mb-4">
         <div class="card card-statistics h-100 card-profile p-3">
             <div class="card-body">
                 <div class="user">
                     <div class="row">
                         <div class="col-md-2">
                             <div class="user-image">
-                                <img src="/assets/images/users/{{ $user->avatar }}" class="@if(Auth::id() == $user->id) myAvatar @else avatar @endif profileImage"/>
-                                <div type="button"  data-toggle="modal" data-target="#avatarModal" class="img-modify-trigger d-flex justify-content-center align-items-center">
+                                <img src="/assets/images/users/{{ $user->avatar }}" class="@if(Auth::id() == $user->id) myAvatar @else avatar  @endif profileImage"/>
+                                <div type="button"  data-toggle="modal" data-target="#avatarModal" class="img-modify-trigger d-flex justify-content-center align-items-center @if(Auth::id() != $user->id) d-none @endif">
                                     <i class="ti-camera fs-large text-white"></i>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                @if(Auth::id() != $user->id && $user->allowedToActionOn()) 
+                @if(Auth::id() != $user->id && $user->allowedToActionOn() && Auth::user()->isAdmin() && $user->type == CREW) 
 
                 <div class="privilleges mt-5 pt-4">
                     <h2 class="fs-medium mb-2">{{ $user->name }}'s Priviledges</h2>
@@ -152,6 +152,31 @@
                         <div class="button priviledge_save">Save</div>
                     </div>
                 </div>
+                @endif
+                @if($user->type == TEACHER || $user->type == STUDENT) 
+                <table id="datatable" class="table  datatable mt-4 table-hover table-sm table-bordered p-0" data-page-length="50" style="text-align: center">
+                    <thead>
+                    <tr class="alert-success">
+                        <th>#</th>
+                        <th>{{__('system.name')}}</th>
+                        <th>{{__('system.day')}}</th>
+                        <th>{{__('system.course_start_time')}}</th>
+                        <th>{{__('system.course_end_time')}}</th>
+                        <th>{{__('system.operation')}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($user->teacher->courses as $course)
+                            <tr>
+                                <td>{{$course->id}}</td>
+                                <td>{{$course->name}}</td>
+                                <td>{{$course->day}}</td>
+                                <td>{{$course->start_at}}</td>
+                                <td>{{$course->end_at}}</td>           
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
                 @endif
             </div>
         </div>

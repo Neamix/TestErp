@@ -1,6 +1,7 @@
 <?php
 
 use App\Course;
+use App\Crew;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TrashController;

@@ -5,7 +5,8 @@ let translateJsonEn = {
     'tuesday':'tuesday',
     'wednesday': 'wednesday',
     'thursday': 'thursday',
-    'friday': 'friday'
+    'friday': 'friday',
+    'no_data_available_in_table' : 'No data available in table'
 }
 
 let translateJsonAr = {
@@ -15,8 +16,10 @@ let translateJsonAr = {
     'tuesday':'الثلاثاء',
     'wednesday': 'الاربعاء',
     'thursday': 'الخميس',
-    'friday': 'الجمعه'
+    'friday': 'الجمعه',
+    'no_data_available_in_table': 'لا يوجد بيانات في الجدول'
 }
+
 console.log(window.lang)
 function getTranslateValue($value) {
     let translate;

@@ -180,4 +180,21 @@ class User extends Authenticatable
 
         return self::validationResult('success',__('validation.this_user_state_changed_to',['state' => $state]));
     }
+
+    public function isAdmin() :bool
+    {
+        return $this->priviledges->whereIn('id',[SYSTEM_ADMIN,SUPER_ADMIN])->count();
+    }
+
+    public function teacher() {
+        return $this->belongsTo(Teacher::class,'id');
+    }
+
+    public function crew() {
+        return $this->belongsTo(Crew::class,'id');
+    }
+
+    public function student() {
+        return $this->belongsTo(Student::class,'id');
+    }
 }
