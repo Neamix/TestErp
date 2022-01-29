@@ -13,9 +13,9 @@
 
 <!--- Style css -->
 @if (App::getLocale() == 'en')
-    <link href="{{ secure_asset('assets/css/ltr.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/css/ltr.css') }}" rel="stylesheet">
 @else
-    <link href="{{ secure_asset('assets/css/rtl.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/css/rtl.css') }}" rel="stylesheet">
 @endif
 
 {{-- jquery ui --}}
