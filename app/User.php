@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
-    use Notifiable,upsertTrait,generateToken,SoftDeletes,validationTrait;
+    use Notifiable,upsertTrait,generateToken,SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
