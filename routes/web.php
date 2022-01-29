@@ -38,7 +38,12 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get('/', function () {
 
         if(Auth::user()->hasPriviledge(SYSTEM_ADMIN)) {
-            return view('dashboard');
+            return view('dashboard')->with([
+                'crew'    => Crew::all()->count(),
+                'courses' => Course::all()->count(),
+                'teacher' => Teacher::all()->count(),
+                'student' => Student::all()->count(),
+            ]);
         } else {
             return redirect()->route('user.myprofile');
         }
@@ -90,5 +95,4 @@ Route::get('/test',function(){
         'thursday',
         'friday'
     ];
-    dd(Carbon::subRealDecades(2));
 });
