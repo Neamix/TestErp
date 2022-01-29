@@ -40,12 +40,12 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+            "app/constant.php"
         ]
     },
     "autoload-dev": {
-        "files": [
-            "app/constant.php"
-        ],
         "psr-4": {
             "Tests\\": "tests/"
         }
