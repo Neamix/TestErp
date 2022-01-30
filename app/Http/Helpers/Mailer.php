@@ -18,6 +18,7 @@ class Mailer {
     static function forgetPassword($user,$token) {
         $send['title'] = 'Forget Password';
         $send['email'] = $user->email;
+        $send['type']  = $user->type;
         $send['name']  = $user->name;
         $send['token'] = $token;
         $send['view']  = 'emails.verifyEmail';

@@ -87,13 +87,6 @@ Route::group(['middleware' => 'auth'],function(){
     
 });
 
-Route::get('/test',function(){
-    $days = [
-        'saturday',
-        'sunday',
-        'tuesday',
-        'wednesday',
-        'thursday',
-        'friday'
-    ];
+Route::get('test',function(){
+    dd(url()->current());
 });

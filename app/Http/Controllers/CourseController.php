@@ -6,12 +6,11 @@ use App\Course;
 use App\Http\Requests\CourseRequest;
 use App\Teacher;
 use App\Traits\validationTrait;
+use App\User;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    use validationTrait;
-
     public function index() {
         return view('courses.upsert')->with(['teachers' => Teacher::all()]);
     }
@@ -57,11 +56,11 @@ class CourseController extends Controller
 
     public function restore($course) {
         Course::onlyTrashed()->where('id',$course)->restore();
-        return self::validationResult('success','');
+        return User::validationResult('success','');
     }
 
     public function destroy($course) {
         Course::withTrashed()->where('id',$course)->forceDelete();
-        return self::validationResult('success','');
+        return User::validationResult('success','');
     }
 }
