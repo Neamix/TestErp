@@ -87,5 +87,7 @@ return [
     'promoted_admin' => 'Promoted to admin',
     'demoted_admin' => 'Demoted from admin',
     'no_data_to_display' => 'No data to display',
-    'profile' => 'Profile'
+    'profile' => 'Profile',
+    'course_list' => 'Course list',
+    'create_course' => 'Create course'
 ];

@@ -15,7 +15,6 @@ login-->
                             @csrf
                             <input type="hidden" name="token" value="{{ $token }}">
                             <div class="section-field mb-20">
-                                <label class="mb-10" for="name">Email Address</label>
                                 <input id="email" type="hidden" class="form-control @error('email') is-invalid @enderror"
                                     name="email" value="{{$email}}" required autocomplete="email" autofocus>
                                 @error('email')

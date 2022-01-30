@@ -45,11 +45,14 @@
                         <ul id="trash" class="collapse" data-parent="#sidebarnav">
                             @can('trash-user',Auth::user())
                             <li><a href="{{ route('trash',['model'=>'user']) }}">{{ __('system.user_list')  }}</a></li>
+                            @endcan
+                            @can('trash-course',Auth::user())
                             <li><a href="{{ route('trash',['model'=>'course']) }}">{{ __('system.courses_list')  }}</a></li>
                             @endcan
                         </ul>    
                     </li>
                     @endcanany
+                    @canany(['view-course', 'upsert-course'], Auth::user())
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#subject">
                             <div class="pull-left"><i class="ti-palette"></i><span
@@ -58,15 +61,30 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="subject" class="collapse" data-parent="#sidebarnav">
+                            @can('upsert-course', Auth::user())
                             <li><a href="{{ route('course.index') }}">{{ __('system.create_course')  }}</a></li>
+                            @endcan
+                            @can('view-course',Auth::user())
                             <li><a href="{{ route('course.list') }}">{{ __('system.course_list')  }}</a></li>
+                            @endcan
                         </ul>
                     </li>
+                    @endcanany
                     <!-- menu item schedule-->
+                    @can('view-course')
                     <li>
                         <a href="{{ route('course.schedule') }}" data-target="#calendar-menu">
                             <div class="pull-left"><i class="ti-calendar"></i><span
                                     class="right-nav-text">{{ __('system.schedule') }}</span></div>
+                            <div class="clearfix"></div>
+                        </a>
+
+                    </li>
+                    @endcan
+                    <li>
+                        <a href="{{ route('user.myprofile') }}" data-target="#calendar-menu">
+                            <div class="pull-left"><i class="ti-calendar"></i><span
+                                    class="right-nav-text">{{ __('system.profile') }}</span></div>
                             <div class="clearfix"></div>
                         </a>
 

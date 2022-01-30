@@ -17,11 +17,10 @@ class Gates {
         Gate::define('trash-user',[UserPolicy::class,'trashUser']);
         Gate::define('super-user',[UserPolicy::class,'superAdmin']);
         //subjects gates
-        Gate::define('trash-course',[CoursePolicy::class,'trashSubject']);
-        Gate::define('edit-course',[CoursePolicy::class,'editSubject']);
-        Gate::define('delete-course',[CoursePolicy::class,'deleteSubject']);
-        Gate::define('view-course',[CoursePolicy::class,'viewAny']);
-        Gate::define('view-course',[CoursePolicy::class,'viewAny']);
+        Gate::define('trash-course',[UserPolicy::class,'trashCourse']);
+        Gate::define('edit-course',[UserPolicy::class,'upsertCourse']);
+        Gate::define('delete-course',[UserPolicy::class,'deleteCourse']);
+        Gate::define('view-course',[UserPolicy::class,'viewCourse']);
     }
 
     static function resolve($name) {
