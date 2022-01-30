@@ -9,7 +9,7 @@
 <h2>{{ __('email.welcome_name',['name'=>$data['name']]) }}</h2>
 <p class="mt-1 mb-4" >{{ __('email.reset_password')}}</p>
 @endif
-<a href="{{ url()->current() }}/password/reset/{{ $data['token'] }}?email={{ $data['email'] }}" class="mt-4">
+<a href="{{ route('password.reset',['token'=>$data['token']]) }}/password/reset/{{ $data['token'] }}?email={{ $data['email'] }}" class="mt-4">
     <button class="button">{{__('email.click_here')}}</button>
 </a>
 @endsection
