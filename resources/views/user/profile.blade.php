@@ -159,7 +159,7 @@
                     </div>
                 </div>
                 @endif
-                @if($user->type == TEACHER || $user->type == STUDENT) 
+                @if($user->type == TEACHER) 
                 <table id="datatable" class="table  datatable mt-4 table-hover table-sm table-bordered p-0" data-page-length="50" style="text-align: center">
                     <thead>
                     <tr class="alert-success">
@@ -172,6 +172,30 @@
                     </thead>
                     <tbody>
                         @foreach($user->teacher->courses as $course)
+                            <tr>
+                                <td>{{$course->id}}</td>
+                                <td>{{$course->name}}</td>
+                                <td>{{$course->day}}</td>
+                                <td>{{$course->start_at}}</td>
+                                <td>{{$course->end_at}}</td>           
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                @endif
+                @if($user->type == STUDENT) 
+                <table id="datatable" class="table  datatable mt-4 table-hover table-sm table-bordered p-0" data-page-length="50" style="text-align: center">
+                    <thead>
+                    <tr class="alert-success">
+                        <th>#</th>
+                        <th>{{__('system.name')}}</th>
+                        <th>{{__('system.day')}}</th>
+                        <th>{{__('system.course_start_time')}}</th>
+                        <th>{{__('system.course_end_time')}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($user->student->courses as $course)
                             <tr>
                                 <td>{{$course->id}}</td>
                                 <td>{{$course->name}}</td>
