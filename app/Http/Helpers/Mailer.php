@@ -10,6 +10,7 @@ class Mailer {
         $send['title'] = 'Verify Account';
         $send['email'] = $user->email;
         $send['name']  = $user->name;
+        $send['type']  = $user->type;
         $send['token'] = $token;
         $send['view']  = 'emails.verifyEmail';
         self::sendEmail($send);
