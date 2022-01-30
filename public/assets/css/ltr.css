@@ -3564,19 +3564,6 @@ tbody.collapse.show {
     position: relative;
 }
 
-.dropdown-toggle::after {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-left: .255em;
-    vertical-align: .255em;
-    content: "";
-    border-top: .3em solid;
-    border-right: .3em solid transparent;
-    border-bottom: 0;
-    border-left: .3em solid transparent;
-}
-
 .dropdown-toggle:empty::after {
     margin-left: 0;
 }
@@ -30100,6 +30087,30 @@ select.form-control-sm:not([size]):not([multiple]) {
 
 #signupForm1 .error {
     color: red;
+}
+
+/*loader*/
+
+.loader {
+    border: 6px solid #d8d8d8;
+    border-radius: 50%;
+    border-top: 6px solid #84ba3f;
+}
+
+.loader-big {
+    width: 100px;
+    height: 100px;
+    animation: 1s linear 1s infinite reverse both running loading;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /*form-control*/

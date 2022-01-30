@@ -2,6 +2,14 @@
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+
+    beforeSend: function() {
+        $(`.loader[data-load="${window.loader}"]`).removeClass('d-none')
+    },
+
+    complete: function() {
+        $(`.loader[data-load="${window.loader}"]`).addClass('d-none');
     }
 });
 
