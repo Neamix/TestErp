@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+{{__('system.dash_board')}}
+@endsection
 @section('content')
         <div class="content-wrapper">
             <div class="page-title">
