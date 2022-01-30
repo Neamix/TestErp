@@ -85,5 +85,7 @@ return [
     'trash' => 'Trash',
     'delete' => 'Delete',
     'promoted_admin' => 'Promoted to admin',
-    'demoted_admin' => 'Demoted from admin'
+    'demoted_admin' => 'Demoted from admin',
+    'no_data_to_display' => 'No data to display',
+    'profile' => 'Profile'
 ];

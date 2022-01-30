@@ -39,8 +39,8 @@
                         </div>
                     </div>
                 </div>
+                <p class="empty_list mt-4 w-100 text-center">{{__('system.no_data_to_display')}}</p>
                 <div class="row mt-4 courses-list">
-                   
                 </div>
             </div>
             <ul class="pagination p-3">

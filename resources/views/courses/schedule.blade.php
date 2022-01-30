@@ -10,7 +10,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-2"> {{__('system.schedule')}}</h4>
+            <h4 class="mb-3"> {{__('system.schedule')}}</h4>
         </div>
     </div>
 </div>
@@ -22,6 +22,7 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
+                <p class="empty_list @if(count($courses)) d-none @endif w-100  text-center">{{__('system.no_data_to_display')}}</p>
                 @foreach($courses as $key => $courseGroup)
                 <h6 class="mb-3">{{__("system.$key")}}</h6>
                 <table id="{{ $key }}" class="table  table-hover table-sm table-bordered p-0" data-page-length="50" style="text-align: center">
@@ -36,8 +37,7 @@
                     </thead>
                     <tbody>
                            @foreach ($courseGroup as $course)
-                                <tr class="position-relative data-row" data-href="#">
-                                    <a href="#" class="position-absolute w-100 h-100 left-0 top-0"></a>
+                                <tr class="position-relative data-row" data-href="{{ route('course.profile',['course'=>$course->id]) }}">
                                     <td>{{$course->id}}</td>
                                     <td>{{$course->name}}</td>
                                     <td>{{__("system.$course->day")}}</td>

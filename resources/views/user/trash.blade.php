@@ -49,6 +49,9 @@
                             </td>                
                             </tr>
                         @endforeach
+                        <tr class="@if(count($users)) d-none @endif">
+                            <td colspan="5">{{__('system.no_data_to_display')}}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

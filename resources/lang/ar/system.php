@@ -17,9 +17,9 @@ return [
     'user_has_been_created_successfully' => 'تم اضافة مستخدم بنجاح',
     'edit_user' => 'تعديل مستخدم',
     'create_user' => 'اضافة مستخدم',
-    'create_subject' => 'اضافة ماده',
+    'create_course' => 'اضافة ماده',
     'user_list' => 'قائمة المستخدمين',
-    'subject_list' => 'قائمة المواد',
+    'course_list' => 'قائمة المواد',
     'crew' => 'موظف',
     'student' => 'طالب',
     'teacher' => 'معلم',
@@ -86,5 +86,7 @@ return [
     'trash' => 'سلة المهملات',
     'delete' => 'مسح',
     'promoted_admin' => 'الترقية الي ادمن',
-    'demoted_admin' => 'تخفيض من الادمن'
+    'demoted_admin' => 'تخفيض من الادمن',
+    'no_data_to_display' => 'لايوجد بيانات للعرض',
+    'profile' => 'الملف الشخصي'
 ];

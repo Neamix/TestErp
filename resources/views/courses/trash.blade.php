@@ -10,7 +10,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-2">{{__('system.trash_bin')}}</h4>
+            <h4 class="mb-3">{{__('system.trash_bin')}}</h4>
         </div>
     </div>
 </div>
@@ -47,6 +47,9 @@
                             </td>                
                             </tr>
                         @endforeach
+                        <tr class="@if(count($courses)) d-none @endif">
+                            <td colspan="5">{{__('system.no_data_to_display')}}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

@@ -24,6 +24,12 @@
                         reloadPager = false;
                     }
                   
+                    if(courses.length > 0) {
+                        $('.empty_list').addClass('d-none');
+                    } else {
+                        $('.empty_list').removeClass('d-none');
+                    }
+
                     courses.forEach(course => {
                         
                         let teachersArray = [];
@@ -37,7 +43,8 @@
 
                         let str = `<div class="col-md-4">
                                         <div class="card mt-4">
-                                            <div class="card-body card-user d-flex">
+                                            <div class="card-body card-user d-flex position-relative">
+                                                <a href="/subject/profile/${course.id}" class="w-100 h-100 top-0 left-0 position-absolute"></a>
                                                 <div class="user-info">
                                                     <h2>${course.name}</h2>
                                                     <p>${teachersString}</p>

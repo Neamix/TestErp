@@ -45,6 +45,7 @@
                         <ul id="trash" class="collapse" data-parent="#sidebarnav">
                             @can('trash-user',Auth::user())
                             <li><a href="{{ route('trash',['model'=>'user']) }}">{{ __('system.user_list')  }}</a></li>
+                            <li><a href="{{ route('trash',['model'=>'course']) }}">{{ __('system.courses_list')  }}</a></li>
                             @endcan
                         </ul>    
                     </li>
@@ -57,14 +58,13 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="subject" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="accordions.html">{{ __('system.create_user')  }}</a></li>
-                            <li><a href="accordions.html">{{ __('system.user_list')  }}</a></li>
-                            <li><a href="alerts.html">{{ __('system.student_list') }}</a></li>
+                            <li><a href="{{ route('course.index') }}">{{ __('system.create_course')  }}</a></li>
+                            <li><a href="{{ route('course.list') }}">{{ __('system.course_list')  }}</a></li>
                         </ul>
                     </li>
                     <!-- menu item schedule-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
+                        <a href="{{ route('course.schedule') }}" data-target="#calendar-menu">
                             <div class="pull-left"><i class="ti-calendar"></i><span
                                     class="right-nav-text">{{ __('system.schedule') }}</span></div>
                             <div class="clearfix"></div>

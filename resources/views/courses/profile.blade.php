@@ -26,13 +26,13 @@
                             <p class="h6"> {{ __("system.$course->day") }} . {{ $course->start_at }}</p>
                                 <div class="action d-flex mt-4">
                                     @can('edit-course')
-                                    <div class="fs-small cursor-pointer"><i class="ti-pencil mr-2"></i><a href="{{ route('course.edit',['course'=>$course->id]) }}">Edit</a></div>
+                                    <div class="fs-small cursor-pointer"><i class="ti-pencil mr-2"></i><a href="{{ route('course.edit',['course'=>$course->id]) }}">{{ __('system.edit') }}</a></div>
                                     @endcan
                                     @can('trash-course')
-                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('course.soft',['course' =>$course->id]) }}" redirect="{{ route('course.list') }}"><i class="ti-trash mr-2"></i>Trash</div>
+                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('course.soft',['course' =>$course->id]) }}" redirect="{{ route('course.list') }}"><i class="ti-trash mr-2"></i>{{__('system.trash')}}</div>
                                     @endcan
                                     @can('delete-course')
-                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('course.destroy',['course'=>$course->id]) }}" redirect="{{ route('course.list') }}"><i class="ti-na mr-2 ml-2"></i>Delete</div>
+                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('course.destroy',['course'=>$course->id]) }}" redirect="{{ route('course.list') }}"><i class="ti-na mr-2 ml-2"></i>{{__('system.delete')}}</div>
                                     @endcan
                                 </div>
                             <h4 class="fs-medium mb-3">{{__('system.teacher_assigned_to_course')}}</h4>
