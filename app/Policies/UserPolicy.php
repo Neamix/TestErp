@@ -22,58 +22,34 @@ class UserPolicy
 
     public function viewAny() {
 
-        if(Auth::user()->hasPriviledge(VIEW_USER_LIST)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Auth::user()->hasPriviledge(VIEW_USER_LIST);
     }
 
     public function editUser() {
 
-        if(Auth::user()->hasPriviledge(EDIT_USER)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Auth::user()->hasPriviledge(EDIT_USER);
 
     }
 
     public function suspendUser() {
 
-        if(Auth::user()->hasPriviledge(SUSPEND_USER)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Auth::user()->hasPriviledge(SUSPEND_USER);
 
     }
 
     public function trashUser() {
 
-        if(Auth::user()->hasPriviledge(TRASH_USER)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Auth::user()->hasPriviledge(TRASH_USER);
 
     }
 
     public function deleteUser() {
 
-        if(Auth::user()->hasPriviledge(DELETE_USER)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Auth::user()->hasPriviledge(DELETE_USER);
 
     }
 
     public function viewDashboard() {
-        if(Auth::user()->hasPriviledge(SYSTEM_ADMIN)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Auth::user()->hasPriviledge(SYSTEM_ADMIN);
     }
 }
