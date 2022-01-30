@@ -11,11 +11,11 @@
             url: url,
             method: 'post',
             success: function (e) {
-                Swal.fire({
-                    title: 'Success',
-                    icon: 'success',
-                    showConfirmButton: false
-                });
+                // Swal.fire({
+                //     title: 'Success',
+                //     icon: 'success',
+                //     showConfirmButton: false
+                // });
             },
             error: function (e) {
                 Swal.fire({
