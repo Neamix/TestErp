@@ -36,14 +36,7 @@ class UserController extends Controller
    public function filter(Request $request) {
       $users = User::filter($request->all())->paginate($request['limit'] ?? 15);
 
-      if( $request->ajax() ) {
-         return $users;
-      }
-
-
-      return view('user.list')->with([
-         'users' => $users
-      ]);
+      return $users;
    }
 
    public function edit(User $user) {

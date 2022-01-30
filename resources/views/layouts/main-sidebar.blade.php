@@ -29,7 +29,7 @@
                                 <li><a href="{{ route('user.index') }}">{{ __('system.create_user')  }}</a></li>
                                 @endcan
                                 @can('viewAny',Auth::user())
-                                <li><a href="{{ route('user.filter') }}">{{ __('system.user_list')  }}</a></li>
+                                <li><a href="{{ route('user.list') }}">{{ __('system.user_list')  }}</a></li>
                                 @endcan
                             </ul>    
                     </li>

@@ -60,7 +60,8 @@ Route::group(['middleware' => 'auth'],function(){
         Route::get('/',[UserController::class,'index'])->name('user.index');
         Route::get('/edit/{user}',[UserController::class,'edit'])->name('user.edit');
         Route::post('/upsert/{user?}',[UserController::class,'upsert'])->name('user.upsert');
-        Route::get('/list',[UserController::class,'filter'])->name('user.filter');
+        Route::get('/list',[UserController::class,'list'])->name('user.list');
+        Route::get('/filter',[UserController::class,'filter'])->name('user.filter');
         Route::get('/profile',[UserController::class,'profile'])->name('user.myprofile');
         Route::get('/profile/{user}',[UserController::class,'profile'])->name('user.profile');
         Route::post('/avatar',[UserController::class,'avatar'])->name('user.avatar');

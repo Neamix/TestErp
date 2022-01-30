@@ -8,9 +8,10 @@
             let name = ($('.search-user').val().length) ? $('.search-user').val() : null;
             let active = $('.active_user:checked').val();
             let page = $('.page-indicator').val();
-
+            window.loader = $('.main-container').attr('load');
+            $('.users-list').html('');
             $.ajax({
-                url: `/user/list?page=${page}`,
+                url: `/user/filter?page=${page}`,
                 data: {
                     'type': type,
                     'name': name,
@@ -18,8 +19,6 @@
                 },
                 success: function(e) {
                     let users = e.data;
-
-                    $('.users-list').html('');
                     
                     if(reloadPager) {
                         createPagination(e.total,e.per_page,$('.pagination'),'{{ Auth::user()->lang }}');
