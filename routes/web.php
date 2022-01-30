@@ -87,6 +87,6 @@ Route::group(['middleware' => 'auth'],function(){
     
 });
 
-Route::get('test',function(){
-    dd(url()->current());
+Route::get('/test',function(){
+    return view('emails.verifyEmail')->with('data',['email'=>'abdalrhmanhussin44@gmail.com','token'=> 'adsasdasdasd','type'=>'teacher','title'=>'Verify','name'=>'Abdalrhman']);
 });
