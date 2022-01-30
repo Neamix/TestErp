@@ -14,7 +14,7 @@ $('.confirmPasswordForm').on('submit',function(e){
     e.preventDefault();
     $.ajax({
         url: $(this).attr('url'),
-        type: $(this).attr('type'),
+        method: $(this).attr('type'),
         data: {password: $('.password-input').val()},
         success: (e) => {
             window.location.href = $(this).attr('redirect');
