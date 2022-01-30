@@ -171,6 +171,16 @@
         $('#table_id').DataTable();
         $('.select-picker-input').keyup(function(){
             let name = $(this).val()
+            let type;
+            let type_id = $(this).attr('data-type');
+            if( type_id == 1) {
+                type = 'crew'
+            } else if(type_id == 2) {
+                type = 'teacher'
+            } else {
+                type = 'student'
+            }
+
             if(name.length) {
                 $.ajax({
                     url: '{{ route("user.filter") }}',
@@ -184,7 +194,12 @@
                             let activeState = (selectedStudents.includes(user.id) || selectedTeachers.includes(user.id)) ? 'active' : '';
                             let add_class = (user.type == '{{ STUDENT }}') ? 'add-student' : 'add-teacher';
                             $(this).siblings($('.drop-down-search-list')).append(`<li class="nav-item ${add_class} p-2 ${activeState}" user-id="${user.id}" user-email="${user.email}" user-name="${user.name}">${user.name}</li>`);
+                            $('.empty-users').remove();
                         });
+
+                        if( ! users.length ) {
+                            $(this).siblings($('.drop-down-search-list')).append(`<li class="nav-item d-flex justify-content-center m-2 empty-users"> ${ getTranslateValue('no') } ${ getTranslateValue(type) } ${getTranslateValue('start_with')} ${name}</li>`);
+                        }
                     }
                 });
         } else {

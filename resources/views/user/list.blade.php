@@ -20,7 +20,7 @@
 <!-- row -->
 <div class="row user-list">
     <div class="col-md-12 mb-30">
-        <div class="card card-statistics h-100">
+        <div class="card card-statistics main-container h-100" load="user_list">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-3">
@@ -53,6 +53,9 @@
                             </div>
                         </form>
                     </div>
+                </div>
+                <div class="loader-container w-100 d-flex justify-content-center mt-4">
+                    <div class="loader loader-big" data-load="user_list"></div>
                 </div>
                 <div class="row mt-4 users-list">
                    
