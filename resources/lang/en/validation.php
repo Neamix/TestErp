@@ -18,5 +18,6 @@ return [
     'end_time_is_required' => 'end time is required',
     'student_is_required'=> 'students is required',
     'teacher_is_required' => 'teacher is required',
-    'end_time_must_be_after_the_start_time' => 'end time must be after the start time'
+    'end_time_must_be_after_the_start_time' => 'end time must be after the start time',
+    'user_has_been_updated_successfully' => 'User has been updated successfully'
 ];

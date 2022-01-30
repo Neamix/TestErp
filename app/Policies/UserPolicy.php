@@ -52,4 +52,8 @@ class UserPolicy
     public function viewDashboard() {
         return Auth::user()->hasPriviledge(SYSTEM_ADMIN);
     }
+
+    public function superAdmin() {
+        return Auth::user()->hasPriviledge(SUPER_ADMIN);
+    }
 }

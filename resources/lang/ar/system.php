@@ -77,5 +77,14 @@ return [
     'trash_bin' => 'سلة المهملات',
     'dash_board' => 'لوحة التحكم',
     'courses'    => 'المواد',
-    
+    'add_user'   => 'اضافة عضو',
+    'update_user' => 'تعديل عضو',
+    'trash_bin'   => 'سلة مهملات',
+    'suspend'  => 'تعليق',
+    'active' => 'تفعيل',
+    'edit' => 'تعديل',
+    'trash' => 'سلة المهملات',
+    'delete' => 'مسح',
+    'promoted_admin' => 'الترقية الي ادمن',
+    'demoted_admin' => 'تخفيض من الادمن'
 ];

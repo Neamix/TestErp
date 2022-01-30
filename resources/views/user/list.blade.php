@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-User List
+{{__('system.user_list')}}
 @stop
 @endsection
 @section('page-header')

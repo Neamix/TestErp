@@ -44,7 +44,7 @@
                         </a>
                         <ul id="trash" class="collapse" data-parent="#sidebarnav">
                             @can('trash-user',Auth::user())
-                            <li><a href="{{ route('user.index') }}">{{ __('system.user_list')  }}</a></li>
+                            <li><a href="{{ route('trash',['model'=>'user']) }}">{{ __('system.user_list')  }}</a></li>
                             @endcan
                         </ul>    
                     </li>

@@ -6,15 +6,15 @@ $.ajaxSetup({
 });
 
 $('.password_confirm_need').on('click',function() {
-    $('.confirmPasswordForm').attr('action',$(this).attr('data-url'));
+    $('.confirmPasswordForm').attr('url',$(this).attr('data-url'));
     $('.confirmPasswordForm').attr('redirect',$(this).attr('redirect'));
 });
 
 $('.confirmPasswordForm').on('submit',function(e){
     e.preventDefault();
     $.ajax({
-        url: $(this).attr('action'),
-        type: $(this).attr('method'),
+        url: $(this).attr('url'),
+        type: $(this).attr('type'),
         data: {password: $('.password-input').val()},
         success: (e) => {
             window.location.href = $(this).attr('redirect');

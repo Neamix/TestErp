@@ -45,11 +45,10 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body d-flex justify-content-center m-3 flex-column align-items-center">
-            <img src="{{ asset('assets/images/alert.png') }}" alt="alert_icon" class="model-alert-image">
+            <img src="/assets/images/alert.png" alt="alert_icon" class="model-alert-image">
             <p class="mb-3 mt-3">{{__('system.please_confirm_your_password')}}</p>
-            <form class="confirmPasswordForm w-100" action="" method="post" redirect="">
-                @csrf
-                <input class="form-control password-input w-100" placeholder="{{__('system.confirm_your_password')}}" name="password"/>
+            <form class="confirmPasswordForm w-100" url="" type="post" redirect="">
+                <input type="password" class="form-control password-input w-100" placeholder="{{__('system.confirm_your_password')}}" name="password"/>
                 <p class="fs-small text-danger mt-2 mb-2 confirm-error"></p>
                 <button class="button mt-2 w-100">{{__('system.confirm')}}</button>
             </form>
@@ -89,7 +88,6 @@
             <!--=================================
  footer -->
 
-            @include('layouts.footer')
         </div><!-- main content wrapper end-->
     </div>
     </div>

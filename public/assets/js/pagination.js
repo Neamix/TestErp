@@ -40,5 +40,5 @@ function setPage(page_no) {
     $('input.page-indicator').val(page_no);
     $('.page-item').removeClass('active');
     $('.page-item').eq(page_no - 1).addClass('active');
-    $('.pagination .pages-inner').css(margin,-($('.page-link').width() + 1)  * $('.page-item.active').index());
+    if($('.page-item').length > 5) $('.pagination .pages-inner').css(margin,-($('.page-link').width() + 1)  * $('.page-item.active').index());
 }

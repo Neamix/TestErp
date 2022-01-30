@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth'],function(){
         Route::post('/forcedelete/{user}',[UserController::class,'forceDelete'])->middleware(['checkPassword','checkAuthority'])->name('user.force');
         Route::post('/softdelete/{user}',[UserController::class,'delete'])->middleware(['checkPassword','checkAuthority'])->name('user.soft');
         Route::post('/restore/{user}',[UserController::class,'restore'])->middleware(['checkPassword','checkAuthority'])->name('user.restore');
+        Route::post('/admin/{user}',[UserController::class,'toggleAdmin'])->middleware(['checkPassword','checkAuthority'])->name('user.admin');
     });
 
     Route::group(['prefix' => 'subject'],function(){

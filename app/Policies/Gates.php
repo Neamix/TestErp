@@ -15,6 +15,7 @@ class Gates {
         Gate::define('delete-user',[UserPolicy::class,'deleteUser']);
         Gate::define('trash-user',[UserPolicy::class,'trashUser']);
         Gate::define('trash-user',[UserPolicy::class,'trashUser']);
+        Gate::define('super-user',[UserPolicy::class,'superAdmin']);
         //subjects gates
         Gate::define('trash-course',[CoursePolicy::class,'trashSubject']);
         Gate::define('edit-course',[CoursePolicy::class,'editSubject']);

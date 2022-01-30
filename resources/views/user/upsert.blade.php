@@ -2,7 +2,11 @@
 @section('css')
 
 @section('title')
-    Upsert
+    @isset($user['id'])
+    {{ __('system.edit_user') }}
+    @else
+    {{ __('system.create_user') }}
+    @endisset
 @stop
 @endsection
 @section('page-header')
@@ -63,7 +67,13 @@
                         </div>
                     </div>
                     <button class="btn">
-                        <p>Add User</p>
+                        <p>
+                            @isset($user['id'])
+                                {{ __('system.update_user') }}
+                            @else
+                                {{ __('system.add_user') }}
+                            @endisset
+                        </p>
                     </button>
                 </form>
             </div>

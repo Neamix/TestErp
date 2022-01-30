@@ -74,5 +74,16 @@ return [
     'teacher_assigned_to_course' => 'Teacher assigned to course',
     'trash_bin' => 'Trash bin',
     'dash_board' => 'Dash Board',
-    'courses'   => 'Courses'
+    'courses'   => 'Courses',
+    'drag&drop' => 'Drag&Drop',
+    'add_user'  => 'Add user',
+    'update_user' => 'Update user',
+    'trash_bin'  => 'Trash Bin',
+    'suspend'  => 'Suspend',
+    'active' => 'Active',
+    'edit' => 'Edit',
+    'trash' => 'Trash',
+    'delete' => 'Delete',
+    'promoted_admin' => 'Promoted to admin',
+    'demoted_admin' => 'Demoted from admin'
 ];

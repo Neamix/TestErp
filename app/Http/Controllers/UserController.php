@@ -90,4 +90,8 @@ class UserController extends Controller
       User::onlyTrashed()->where('id',$user)->restore();
       return User::validationResult('success','User has been restored');
    }
+
+   public function toggleAdmin(User $user) {
+      return $user->toggleAdmin();
+   }
 }

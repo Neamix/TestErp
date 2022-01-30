@@ -48,19 +48,25 @@
                             @if(Auth::id() != $user->id && $user->allowedToActionOn())
                                 <div class="action d-flex mt-4">
                                     @can('edit-user')
-                                    <div class="fs-small cursor-pointer"><i class="ti-pencil mr-2"></i><a href="{{ route('user.edit',['user'=>$user->id]) }}">Edit</a></div>
+                                    <div class="fs-small cursor-pointer"><i class="ti-pencil mr-2"></i><a href="{{ route('user.edit',['user'=>$user->id]) }}">{{__('system.edit')}}</a></div>
                                     @endcan
                                     @can('trash-user')
-                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('user.soft',['user' =>$user->id]) }}" redirect="{{ route('user.filter') }}"><i class="ti-trash mr-2"></i>Trash</div>
+                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('user.soft',['user' =>$user->id]) }}" redirect="{{ route('user.filter') }}"><i class="ti-trash mr-2"></i>{{__('system.trash')}}</div>
                                     @endcan
                                     @can('delete-user')
-                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('user.destroy',['user'=>$user->id]) }}" redirect="{{ route('user.filter') }}"><i class="ti-na mr-2 ml-2"></i>Delete</div>
+                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('user.destroy',['user'=>$user->id]) }}" redirect="{{ route('user.filter') }}"><i class="ti-na mr-2 ml-2"></i>{{__('system.delete')}}</div>
                                     @endcan
                                     @can('suspend-user')
-                                    <div class="fs-small ml-2 cursor-pointer state-btn @if(!$user->active) d-none @endif"><i class="ti-control-pause mr-2 ml-2"></i>Suspend</div>
+                                    <div class="fs-small ml-2 cursor-pointer state-btn @if(!$user->active) d-none @endif"><i class="ti-control-pause mr-2 ml-2"></i>{{__('system.suspend')}}</div>
                                     @endcan
                                     @can('suspend-user')
-                                    <div class="fs-small ml-2 cursor-pointer state-btn @if($user->active) d-none @endif"><i class="ti-control-play mr-2 ml-2"></i>Activate</div>
+                                    <div class="fs-small ml-2 cursor-pointer state-btn @if($user->active) d-none @endif"><i class="ti-control-play mr-2 ml-2"></i>{{__('system.active')}}</div>
+                                    @endcan
+                                    @can('super-user')
+                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need @if($user->isAdmin()) d-none @endif" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('user.admin',['user'=>$user->id]) }}" redirect="{{ route('user.profile',['user'=>$user->id]) }}"><i class="ti-arrow-up mr-2 ml-2"></i>{{__('system.promoted_admin')}}</div>
+                                    @endcan
+                                    @can('super-user')
+                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need @if(!$user->isAdmin()) d-none @endif" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('user.admin',['user'=>$user->id]) }}" redirect="{{ route('user.profile',['user'=>$user->id]) }}"><i class="ti-arrow-down mr-2 ml-2"></i>{{__('system.demoted_admin')}}</div>
                                     @endcan
                                 </div>
                             @endif
@@ -162,7 +168,6 @@
                         <th>{{__('system.day')}}</th>
                         <th>{{__('system.course_start_time')}}</th>
                         <th>{{__('system.course_end_time')}}</th>
-                        <th>{{__('system.operation')}}</th>
                     </tr>
                     </thead>
                     <tbody>

@@ -89,9 +89,10 @@ class User extends Authenticatable
         if( ! $data['id'] ) {
             $token = self::token($user);
             Mailer::verifyUser($user,$token);
+            return self::validationResult('success',__('system.user_has_been_created_successfully'));
         }
 
-        return self::validationResult('success',__('system.user_has_been_created_successfully'));
+        return self::validationResult('success',__('validation.user_has_been_updated_successfully'));
     }
 
     public static function filter($request) {
@@ -188,9 +189,14 @@ class User extends Authenticatable
         return self::validationResult('success',__('validation.this_user_state_changed_to',['state' => $state]));
     }
 
+    public function toggleAdmin() {
+        $this->priviledges()->toggle([SYSTEM_ADMIN]);
+        return self::validationResult('success','');
+    }
+
     public function isAdmin() :bool
     {
-        return $this->priviledges->whereIn('id',[SYSTEM_ADMIN,SUPER_ADMIN])->count();
+        return $this->priviledges()->whereIn('priviledges.id',[SYSTEM_ADMIN,SUPER_ADMIN])->count();
     }
 
     public function teacher() {

@@ -79,7 +79,7 @@
                     if(e.result == 'success') {
                         Swal.fire({
                             title: 'Success',
-                            text: '{{ __("validation.user_has_been_created_successfully") }}',
+                            text: e.message,
                             icon: 'success',
                             confirmButtonText: 'Cool',
                             showConfirmButton: false

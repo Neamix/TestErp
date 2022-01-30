@@ -18,5 +18,6 @@ return [
     'end_time_is_required' => 'يجب ان تضع معاد لالانتهاء',
     'student_is_required'=> 'يجب ان تضع طلاب',
     'teacher_is_required' => 'يجب ان تضع معلمين',
-    'end_time_must_be_after_the_start_time' => 'ميعاد الانتهاء يجب ان يكون بعد ميعاد البدء'
+    'end_time_must_be_after_the_start_time' => 'ميعاد الانتهاء يجب ان يكون بعد ميعاد البدء',
+    'user_has_been_updated_successfully' => 'تم تعديل المستخدم بنجاح'
 ];
