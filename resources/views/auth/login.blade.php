@@ -43,7 +43,7 @@ login-->
                                 <div class="remember-checkbox mb-30">
                                     <input type="checkbox" class="form-control" name="two" id="two" />
                                     <label for="two"> Remeber Me</label>
-                                    <a href="#" class="float-right">Forget Password ?</a>
+                                    <a href="/password/reset" class="float-right">Forget Password ?</a>
                                 </div>
                             </div>
 
