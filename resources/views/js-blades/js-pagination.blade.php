@@ -24,6 +24,13 @@
                         createPagination(e.total,e.per_page,$('.pagination'),'{{ Auth::user()->lang }}');
                         reloadPager = false;
                     }
+
+                    if(users.length > 0) {
+                        $('.empty_list').addClass('d-none');
+                    } else {
+                        $('.users-list').children().remove();
+                        $('.empty_list').removeClass('d-none');
+                    }
                   
                     users.forEach(user => {
                         console.log(user);

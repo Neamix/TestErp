@@ -4,7 +4,6 @@
     $('#upsertUser').on('submit', function (e) {
         //stop submit action
         e.preventDefault();
-
         //get input values
         let username = $('#user_name').val();
         let email = $('#user_email').val();

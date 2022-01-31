@@ -30167,12 +30167,28 @@ select.form-control-sm:not([size]):not([multiple]) {
     border: 6px solid #d8d8d8;
     border-radius: 50%;
     border-top: 6px solid #84ba3f;
+    animation: 1s linear 1s infinite reverse both running loading;
 }
 
 .loader-big {
     width: 100px;
     height: 100px;
-    animation: 1s linear 1s infinite reverse both running loading;
+}
+
+.loader-small {
+    width: 15px;
+    height: 14px;
+    border-width: 3px;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /*form-control*/

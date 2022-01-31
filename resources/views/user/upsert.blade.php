@@ -66,7 +66,8 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn">
+                    <button class="btn d-flex align-items-center loader-key" load="upsert_user">
+                        <div class="loader loader-small ml-2 mr-2 d-none" data-load="upsert_user"></div>
                         <p>
                             @isset($user['id'])
                                 {{ __('system.update_user') }}

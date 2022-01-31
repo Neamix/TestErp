@@ -67,7 +67,7 @@ class UserController extends Controller
 
    public function destroy(User $user) {
       $user->forceDelete();
-      return redirect()->route('user.filter');
+      return User::validationResult('success','User has been deleted');
    }
 
    public function forceDelete($user) {

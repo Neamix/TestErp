@@ -25,7 +25,7 @@ class PriviledgeRequest extends FormRequest
     public function rules()
     {
         return [
-            'priviledges' => ['required',function($attribute,$value,$fail) {
+            'priviledges' => [function($attribute,$value,$fail) {
                 Priviledge::whereIn('id',$this->priviledges)->each(function($priviledge) use ($fail) {
                     if($priviledge->parent_id) {
 

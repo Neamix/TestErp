@@ -348,6 +348,7 @@ POTENZA.Sidebarnav = function () {
     });
 }
 
+
 /*************************
     Fullscreenwindow
 *************************/ 

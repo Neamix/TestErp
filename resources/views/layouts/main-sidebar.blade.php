@@ -34,7 +34,7 @@
                             </ul>    
                     </li>
                     @endcanany
-                    @canany(['trash-user'], Auth::user())
+                    @canany(['trash-user','trash-course'], Auth::user())
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#trash">
                             <div class="pull-left"><i class="ti-trash"></i><span

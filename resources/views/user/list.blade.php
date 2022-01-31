@@ -57,6 +57,7 @@
                 <div class="loader-container w-100 d-flex justify-content-center mt-4">
                     <div class="loader loader-big" data-load="user_list"></div>
                 </div>
+                <p class="empty_list mt-4 w-100 text-center">{{__('system.no_data_to_display')}}</p>
                 <div class="row mt-4 users-list">
                    
                 </div>

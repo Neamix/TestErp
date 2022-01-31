@@ -182,7 +182,6 @@ class User extends Authenticatable
         } else {
             $this->active = ACTIVE;
         }
-
         $this->save();
         $state = ($this->active) ? 'Activated' : 'Suspended';
 

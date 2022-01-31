@@ -27,7 +27,7 @@ class Gates {
 
         $gate = true;
 
-        if($name == 'user.filter' || $name == 'user.profile') {
+        if($name == 'user.list' || $name == 'user.profile') {
            $gate =  Gate::allows('view-user');
         }
 

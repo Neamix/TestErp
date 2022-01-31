@@ -51,7 +51,7 @@ class CourseController extends Controller
 
     public function delete(Course $course) {
         $course->delete();
-        return self::validationResult('success','');
+        return User::validationResult('success','');
     }
 
     public function restore($course) {

@@ -51,16 +51,16 @@
                                     <div class="fs-small cursor-pointer"><i class="ti-pencil mr-2"></i><a href="{{ route('user.edit',['user'=>$user->id]) }}">{{__('system.edit')}}</a></div>
                                     @endcan
                                     @can('trash-user')
-                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('user.soft',['user' =>$user->id]) }}" redirect="{{ route('user.filter') }}"><i class="ti-trash mr-2"></i>{{__('system.trash')}}</div>
+                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('user.soft',['user' =>$user->id]) }}" redirect="{{ route('user.list') }}"><i class="ti-trash mr-2"></i>{{__('system.trash')}}</div>
                                     @endcan
                                     @can('delete-user')
-                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('user.destroy',['user'=>$user->id]) }}" redirect="{{ route('user.filter') }}"><i class="ti-na mr-2 ml-2"></i>{{__('system.delete')}}</div>
+                                    <div class="fs-small ml-2 cursor-pointer password_confirm_need" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('user.destroy',['user'=>$user->id]) }}" redirect="{{ route('user.list') }}"><i class="ti-na mr-2 ml-2"></i>{{__('system.delete')}}</div>
                                     @endcan
                                     @can('suspend-user')
-                                    <div class="fs-small ml-2 cursor-pointer state-btn @if(!$user->active) d-none @endif"><i class="ti-control-pause mr-2 ml-2"></i>{{__('system.suspend')}}</div>
+                                    <div class="fs-small ml-2 cursor-pointer state-btn @if($user->active == SUSPEND) d-none @endif"><i class="ti-control-pause mr-2 ml-2"></i>{{__('system.suspend')}}</div>
                                     @endcan
                                     @can('suspend-user')
-                                    <div class="fs-small ml-2 cursor-pointer state-btn @if($user->active) d-none @endif"><i class="ti-control-play mr-2 ml-2"></i>{{__('system.active')}}</div>
+                                    <div class="fs-small ml-2 cursor-pointer state-btn @if($user->active == ACTIVE) d-none @endif"><i class="ti-control-play mr-2 ml-2"></i>{{__('system.active')}}</div>
                                     @endcan
                                     @can('super-user')
                                     <div class="fs-small ml-2 cursor-pointer password_confirm_need @if($user->isAdmin()) d-none @endif" data-toggle="modal" data-target="#confirmPassword" data-url="{{ route('user.admin',['user'=>$user->id]) }}" redirect="{{ route('user.profile',['user'=>$user->id]) }}"><i class="ti-arrow-up mr-2 ml-2"></i>{{__('system.promoted_admin')}}</div>
@@ -118,11 +118,11 @@
                                             <label>{{ __('system.edit_subject') }}</label>
                                         </div>
                                         <div class="form-group mb-2">
-                                            <input class="privillege-input" type="checkbox" value="{{ DELETE_USER }}" parent_id="{{ VIEW_SUBJECT_LIST }}" data_parent="subject">
+                                            <input class="privillege-input" type="checkbox" value="{{ DELETE_SUBJECT }}" parent_id="{{ VIEW_SUBJECT_LIST }}" data_parent="subject">
                                             <label>{{ __('system.delete_subject') }}</label>
                                         </div>
                                         <div class="form-group mb-2">
-                                            <input class="privillege-input" type="checkbox" value="{{ TRASH_USER }}" parent_id="{{ VIEW_SUBJECT_LIST }}" data_parent="subject">
+                                            <input class="privillege-input" type="checkbox" value="{{ TRASH_SUBJECT }}" parent_id="{{ VIEW_SUBJECT_LIST }}" data_parent="subject">
                                             <label>{{ __('system.trash_subject') }}</label>
                                         </div>
                                     </div>
@@ -155,7 +155,10 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="button priviledge_save">Save</div>
+                        <div class="button priviledge_save loader-key d-flex align-items-center" load="priviledge_save">
+                            <div class="loader loader-small ml-2 mr-2 d-none" data-load="priviledge_save"></div>
+                            Save
+                        </div>
                     </div>
                 </div>
                 @endif

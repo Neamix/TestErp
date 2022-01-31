@@ -5,6 +5,7 @@ $.ajaxSetup({
     },
 
     beforeSend: function() {
+        console.log(window.loader);
         $(`.loader[data-load="${window.loader}"]`).removeClass('d-none')
     },
 
@@ -12,6 +13,10 @@ $.ajaxSetup({
         $(`.loader[data-load="${window.loader}"]`).addClass('d-none');
     }
 });
+
+$('.loader-key').on('click',function(){
+    window.loader = $(this).attr('load');
+})
 
 $('.password_confirm_need').on('click',function() {
     $('.confirmPasswordForm').attr('url',$(this).attr('data-url'));

@@ -107,7 +107,8 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn">
+                    <button class="btn loader-key d-flex align-items-center" load="upsert_subject">
+                        <div class="loader loader-small ml-2 mr-2 d-none" data-load="upsert_subject"></div>
                         <p>{{ __('system.add_subject') }}</p>
                     </button>
                 </form>
