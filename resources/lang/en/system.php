@@ -37,7 +37,6 @@ return [
     'view_subject_list' => 'View subject list',
     'edit_subject' => 'Edit subject',
     'delete_subject' => 'Delete subject',
-    'trash_user' => 'Trash subject',
     'please_confirm_your_password' =>  'Please confirm your password',
     'confirm_your_password' => 'Confirm your password',
     'confirm' => 'Confirm',
@@ -89,5 +88,6 @@ return [
     'no_data_to_display' => 'No data to display',
     'profile' => 'Profile',
     'course_list' => 'Course list',
-    'create_course' => 'Create course'
+    'create_course' => 'Create course',
+    'trash_subject' => 'Trash Course'
 ];

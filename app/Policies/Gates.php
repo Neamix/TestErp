@@ -47,7 +47,7 @@ class Gates {
             $gate = Gate::allows('trash-user');
         }
 
-        if($name == 'course.index' || $name == 'course.schedule') {
+        if($name == 'course.index' || $name == 'course.schedule' || $name == 'course.list' || $name == 'course.profile') {
             $gate = Gate::allows('view-course');
         }
 
@@ -55,7 +55,7 @@ class Gates {
             $gate = Gate::allows('edit-course');
         }
 
-        if($name == 'course.delete') {
+        if($name == 'course.delete' || $name == 'course.destroy') {
             $gate = Gate::allows('delete-course');
         }
 
