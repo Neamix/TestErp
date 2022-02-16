@@ -7,7 +7,7 @@
                     <!-- menu item Dashboard-->
                     @can('viewDashboard', Auth::user())
                     <li>
-                        <a href="/" data-toggle="collapse" data-target="#dashboard">
+                        <a href="/">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ __('system.dashboard') }}</span>
                             </div>
                             <div class="clearfix"></div>
